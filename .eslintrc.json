@@ -1,0 +1,41 @@
+{
+    "extends": "airbnb",
+    "parser": "babel-eslint",
+    "env": {
+        "browser": true,
+        "jest": true
+    },
+    "rules": {
+        "array-bracket-spacing": ["error", "always"],
+        "arrow-body-style": "off",
+        "lines-between-class-members": "off",
+        "import/no-unresolved": "off",
+        "import/prefer-default-export": "off",
+        "max-len": "off",
+        "newline-per-chained-call": "off",
+        "no-mixed-operators": "off",
+        "no-useless-concat": "off",
+        "no-restricted-syntax": "off",
+        "object-curly-newline": "off",
+        "operator-linebreak": "off",
+        "padded-blocks": "off",
+        "prefer-template": "off",
+        "prefer-destructuring": "off",
+        "react/require-default-props": "off",
+        "react/prop-types": "off",
+        "react/jsx-curly-spacing": "off",
+        "space-infix-ops": "off",
+        "no-plusplus": "off",
+
+        "arrow-parens": "off",
+        "react/jsx-props-no-spreading": "off",
+        "max-classes-per-file": "off",
+        "no-multi-spaces": "off",
+
+        "implicit-arrow-linebreak": "off",
+        "no-nested-ternary": "off"
+    },
+    "globals": {
+        "Exception": true
+    }
+}
