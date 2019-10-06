@@ -108,6 +108,10 @@ export const styles = theme => ({
     textAlign: 'center',
     color: '#808080',
   },
+  selectFieldBase: {
+    marginRight: 20,
+    width: 80,
+  },
 
   // ============================
   // button
