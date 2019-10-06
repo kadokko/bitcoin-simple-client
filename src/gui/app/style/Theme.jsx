@@ -135,5 +135,10 @@ export const theme = createMuiTheme({
         paddingBottom: 5,
       },
     },
+    MuiSelect: {
+      selectMenu: {
+        padding: 10,
+      },
+    },
   },
 });

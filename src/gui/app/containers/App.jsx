@@ -5,6 +5,7 @@ import { TabContainer } from 'gui/app/components/container';
 import { EditIcon, AddBoxIcon, SettingsIcon, VpnKeyIcon } from 'gui/app/components/icon';
 import { Div } from 'gui/app/components/base';
 import { styles } from 'gui/app/style/Styles';
+import Key from 'gui/key/containers/Key';
 import BitcoinHdKey from 'gui/hdkey/containers/BitcoinHdKey';
 import EditorTxStandard from 'gui/editor-tx/containers/standard/EditorTxStandard';
 import EditorTxSegwit from 'gui/editor-tx/containers/segwit/EditorTxSegwit';
@@ -52,6 +53,10 @@ const App = ({ classes }) => {
                 icon={<EditIcon />}
               />
               <IconTab
+                label="Key"
+                icon={<VpnKeyIcon />}
+              />
+              <IconTab
                 label="Block"
                 icon={<AddBoxIcon />}
               />
@@ -92,15 +97,20 @@ const App = ({ classes }) => {
       )}
       { tabNo === 2 && (
         <TabContainer>
-          <Block />
+          <Key />
         </TabContainer>
       )}
       { tabNo === 3 && (
         <TabContainer>
-          <BitcoinHdKey />
+          <Block />
         </TabContainer>
       )}
       { tabNo === 4 && (
+        <TabContainer>
+          <BitcoinHdKey />
+        </TabContainer>
+      )}
+      { tabNo === 5 && (
         <TabContainer>
           <Config />
         </TabContainer>

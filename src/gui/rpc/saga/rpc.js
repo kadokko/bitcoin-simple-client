@@ -31,6 +31,11 @@ export const getPubkey = async (address) => {
   return pubkey;
 };
 
+// export const getAddressInfo = async (address) => {
+//   const { payload: { data: addrInfo } } = await post('getaddressinfo', [ address ]);
+//   return addrInfo;
+// };
+
 export const decodeScript = async (scriptHex) => {
   const { payload: { data: { asm } } } = await post('decodescript', [ scriptHex ]);
   return asm;
@@ -43,4 +48,9 @@ export const sendRawTx = async (txHex) => (
 export const generateBlocks = async (num) => {
   const { payload: { data: blockId } } = await post('generate', [ parseInt(num, 10) ]);
   return blockId;
+};
+
+export const getNewAddress = async (addrType='bech32') => {
+  const { payload: { data: address } } = await post('getnewaddress', [ '', addrType ]);
+  return address;
 };

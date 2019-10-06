@@ -7,6 +7,7 @@ import { standardForm, segwitForm } from 'gui/editor-tx/reducers/form';
 import { standardUtxoDialog, segwitUtxoDialog } from 'gui/editor-tx/reducers/utxo';
 import { standardSigForm, segwitSigForm } from 'gui/editor-tx/reducers/sig';
 import { configForm } from 'gui/config/reducers/form';
+import { keyForm } from 'gui/key/reducers/form';
 import { hdkeyForm } from 'gui/hdkey/reducers/form';
 
 
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
   segwitUtxoDialog,
   form: formReducer.plugin({
     ...configForm,
+    ...keyForm,
     ...hdkeyForm,
     ...standardForm,
     ...standardSigForm,
