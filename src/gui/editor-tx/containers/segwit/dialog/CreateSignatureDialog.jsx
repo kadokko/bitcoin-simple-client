@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import { reduxForm, Field } from 'redux-form';
-import { Box, Paper } from '@material-ui/core';
+import { Paper } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import { styles } from 'gui/app/style/Styles';
 import { SquareIconBtn } from 'gui/app/components/button';
@@ -9,6 +9,7 @@ import { DivContainer } from 'gui/app/components/container';
 import { ModalDialog } from 'gui/app/components/dialog';
 import { InputField, TextAreaField } from 'gui/app/components/field/redux-form';
 import { CopyIcon, PlayIcon } from 'gui/app/components/icon';
+import { Box } from 'gui/app/components/layout';
 import { connected } from 'gui/editor-tx/containers/base';
 import * as actions from 'gui/editor-tx/actions/segwit';
 import { ViewHelper as Helper } from 'lib/view/ViewHelper';
@@ -27,13 +28,6 @@ const TextArea = withStyles(() => ({
     paddingTop: 11,
   },
 }))(TextAreaField);
-
-const Area = withStyles(() => ({
-  root: {
-    marginTop: 5,
-    marginBottom: 5,
-  },
-}))(Box);
 
 
 const CreateSignatureDialog = ({
@@ -66,7 +60,7 @@ const CreateSignatureDialog = ({
           >
             <Paper className={ classes.signatureDialogPaper }>
               <DivContainer>
-                <Area mb={1}>
+                <Box mb={1}>
                   <Field
                     component={ Input }
                     label="public key (for finding private key)"
@@ -79,11 +73,11 @@ const CreateSignatureDialog = ({
                   >
                     <PlayIcon />
                   </SquareIconBtn>
-                </Area>
+                </Box>
               </DivContainer>
 
               <DivContainer>
-                <Area mb={1}>
+                <Box mb={1}>
                   <Field
                     component={ Input }
                     label="private key *"
@@ -96,32 +90,32 @@ const CreateSignatureDialog = ({
                   >
                     <PlayIcon />
                   </SquareIconBtn>
-                </Area>
+                </Box>
               </DivContainer>
 
               <DivContainer>
-                <Area mb={1}>
+                <Box mb={1}>
                   <Field
                     component={ TextArea }
                     label="script code *"
                     name="scriptCode"
                   />
-                </Area>
+                </Box>
               </DivContainer>
 
               <DivContainer>
-                <Area mb={1}>
+                <Box mb={1}>
                   <Field
                     component={ Input }
                     label="amount *"
                     name="amount"
                     type="number"
                   />
-                </Area>
+                </Box>
               </DivContainer>
 
               <DivContainer>
-                <Area mb={1}>
+                <Box mb={1}>
                   <Field
                     component={ TextArea }
                     label="signature"
@@ -137,7 +131,7 @@ const CreateSignatureDialog = ({
                   >
                     <CopyIcon />
                   </SquareIconBtn>
-                </Area>
+                </Box>
               </DivContainer>
             </Paper>
           </ModalDialog>
