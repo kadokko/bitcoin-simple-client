@@ -2,9 +2,9 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
-import { Box } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import { styles } from 'gui/app/style/Styles';
+import { Box } from 'gui/app/components/layout';
 import { InputField } from 'gui/app/components/field/redux-form';
 import { BasicBtn } from 'gui/app/components/button';
 import * as actionDefs from '../actions/config';
@@ -17,13 +17,6 @@ const Input = withStyles(() => ({
     marginBottom: 4,
   },
 }))(InputField);
-
-const Area = withStyles(() => ({
-  root: {
-    marginTop: 15,
-    marginBottom: 15,
-  },
-}))(Box);
 
 
 const Config = ({
@@ -42,21 +35,21 @@ const Config = ({
     <form
       onSubmit={ handleSubmit(updateConfig) }
     >
-      <Area mb={1}>
+      <Box mb={1}>
         <Field
           component={ Input }
           label="rpc url"
           name="rpcurl"
         />
-      </Area>
-      <Area mb={1}>
+      </Box>
+      <Box mb={1}>
         <Field
           component={ Input }
           label="rpc username"
           name="rpcuser"
         />
-      </Area>
-      <Area mb={1}>
+      </Box>
+      <Box mb={1}>
         <Field
           component={ Input }
           label="rpc password"
@@ -65,14 +58,14 @@ const Config = ({
             type: 'password',
           }}
         />
-      </Area>
-      <Area mb={1}>
+      </Box>
+      <Box mb={1}>
         <BasicBtn
           label="update"
           type="submit"
           disabled={ syncErrors == null && (pristine || submitting) }
         />
-      </Area>
+      </Box>
     </form>
   </div>
 );
