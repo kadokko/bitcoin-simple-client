@@ -24,7 +24,7 @@ because you can test the scripts by actually running them in the Bitcoin regtest
 * Bitcoin Core 18 (regtest)
 
 Bitcoin regtest environment is required to use this application.
-You can use [this environment](https://github.com/kadokko/env-multi-bitcoind).
+You can use [this environment](https://github.com/kadokko/env-multi-bitcoin).
 
 
 ## Usage
