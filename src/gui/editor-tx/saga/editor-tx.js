@@ -51,6 +51,13 @@ function* setUtxo(type, action) {
   yield put(type.closeUtxoModal());
 }
 
+function* getUtxoDetail(type, action) {
+  const { payload: p } = action;
+  const txout = yield call(rpc.getTxOut, p.txid, p.n);
+  yield put(type.receiveUtxoDetail(p.idx, txout.amount, txout.scriptPubKey));
+  yield put(type.receiveVinAmount(p.idx));
+}
+
 function* dumpPrvkeyForStandardTx(type, action) {
   const { payload: p } = action;
   const address = KeyConv.pubkeyHash160ToP2pkhAddr(p.pubkeyHash);
@@ -167,6 +174,7 @@ function* sendTx(type, action) {
 export const standardSaga = [
   takeLatest(stdActionTypes.USER_SEARCH_UTXOS, searchUtxos, std),
   takeLatest(stdActionTypes.USER_SET_UTXO, setUtxo, std),
+  takeLatest(stdActionTypes.USER_GET_UTXO_DETAIL, getUtxoDetail, std),
   takeLatest(stdActionTypes.USER_DUMP_PRVKEY, dumpPrvkeyForStandardTx, std),
   takeLatest(stdActionTypes.USER_CERATE_SIGNATURE, createSignatureForStandardTx, std),
   takeLatest(stdActionTypes.USER_SET_SCRIPT_TEMPLATE, setScriptTemplate, std),
@@ -179,6 +187,7 @@ export const standardSaga = [
 export const segwitSaga = [
   takeLatest(segActionTypes.USER_SEARCH_UTXOS, searchUtxos, seg),
   takeLatest(segActionTypes.USER_SET_UTXO, setUtxo, seg),
+  takeLatest(segActionTypes.USER_GET_UTXO_DETAIL, getUtxoDetail, seg),
   takeLatest(segActionTypes.USER_DUMP_PRVKEY, dumpPrvkeyForSegwitTx, seg),
   takeLatest(segActionTypes.USER_CERATE_SIGNATURE, createSignatureForSegwitTx, seg),
   takeLatest(segActionTypes.USER_SET_SCRIPT_TEMPLATE, setScriptTemplate, seg),

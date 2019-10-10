@@ -127,6 +127,25 @@ class Actions {
       },
     );
 
+  // field: vin amount, scriptPubKey
+  static getUtxoDetail = (types, idx, txid, n) =>
+    createAction(
+      types.USER_GET_UTXO_DETAIL, {
+        idx,
+        txid,
+        n,
+      },
+    );
+
+  static receiveUtxoDetail = (types, idx, amount, scriptPubKey) =>
+    createAction(
+      types.REDUCER_RECEIVE_UTXO_DETAIL, {
+        idx,
+        amount,
+        scriptPubKey,
+      },
+    );
+
   // field: vin amount
   static receiveVinAmount = (types, idx) =>
     createAction(
