@@ -26,6 +26,7 @@ const EditorTxStandard = ({
     openUtxoModal,
     openSignatureModal,
     openTemplateModal,
+    getUtxoDetail,
     updateAmounts,
     updateVoutValue,
     updateScriptWithSuggest,
@@ -54,9 +55,10 @@ const EditorTxStandard = ({
       {/* vins */}
       <Row>
         <VinInputs
+          values={ values }
           openUtxoModal={ openUtxoModal }
           openSignatureModal={ openSignatureModal }
-          updateAmounts={ updateAmounts }
+          getUtxoDetail={ getUtxoDetail }
         />
       </Row>
 

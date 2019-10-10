@@ -3,6 +3,7 @@ import { FieldArray } from 'redux-form';
 import { SquareIconBtnMini as IconBtn } from 'gui/app/components/button';
 import { AddBox, RemoveBox, Search, Create } from 'gui/app/components/icon';
 import * as validator from 'gui/editor-tx/validator/validator';
+import Validator from 'lib/util/Validator';
 import { RowLabel, RowContents } from './layout/Rows';
 import { Content, ContentIndex, ContentFields } from './layout/Contents';
 import { TextInputField, TextAreaField, CurrencyInputField } from './field/InputFields';
@@ -19,7 +20,14 @@ export const initialVin = {
   sequence: 4294967295,
 };
 
-const renderVinInputs = ({ fields, ...custom }) => (
+const loadUtxoDetail = (index, values, getUtxoDetail) => {
+  const vin = values.vins[index];
+  if (!Validator.isEmpty(vin.txid) && !Validator.isEmpty(vin.vout) && vin.txid.length === 64) {
+    getUtxoDetail(index, vin.txid, vin.vout);
+  }
+};
+
+const renderVinInputs = ({ fields, values, openUtxoModal, openSignatureModal, getUtxoDetail }) => (
   <div>
     <RowLabel>
       <div>vin</div>
@@ -42,7 +50,7 @@ const renderVinInputs = ({ fields, ...custom }) => (
             <div>
               <IconBtn
                 label="search utxo"
-                onClick={ () => custom.openUtxoModal(index) }
+                onClick={ () => openUtxoModal(index) }
               >
                 <Search />
               </IconBtn>
@@ -53,10 +61,12 @@ const renderVinInputs = ({ fields, ...custom }) => (
               label="txid"
               name={`${vin}.txid`}
               validator={[ validator.isTxid ]}
+              onBlur={ () => loadUtxoDetail(index, values, getUtxoDetail) }
             />
             <TextInputField
               label="vout"
               name={`${vin}.vout`}
+              onBlur={ () => loadUtxoDetail(index, values, getUtxoDetail) }
             />
             <CurrencyInputField
               label="amount"
@@ -72,7 +82,7 @@ const renderVinInputs = ({ fields, ...custom }) => (
             <TextAreaField
               label="scriptSig"
               name={`${vin}.scriptSig`}
-              func={ () => custom.openSignatureModal(index) }
+              func={ () => openSignatureModal(index) }
               icon={(
                 <IconBtn label="create signature">
                   <Create />
@@ -92,14 +102,15 @@ const renderVinInputs = ({ fields, ...custom }) => (
   </div>
 );
 
-export const VinInputs = ({ openUtxoModal, openSignatureModal, updateAmounts }) => (
+export const VinInputs = ({ values, openUtxoModal, openSignatureModal, getUtxoDetail }) => (
   <FieldArray
     name="vins"
     component={ renderVinInputs }
     props={{
+      values,
       openUtxoModal,
       openSignatureModal,
-      updateAmounts,
+      getUtxoDetail,
     }}
   />
 );

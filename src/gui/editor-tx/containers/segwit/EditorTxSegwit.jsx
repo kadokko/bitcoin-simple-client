@@ -27,6 +27,7 @@ const EditorTxSegwit = ({
     openUtxoModal,
     openSignatureModal,
     openTemplateModal,
+    getUtxoDetail,
     updateAmounts,
     updateVoutValue,
     updateScriptWithSuggest,
@@ -54,9 +55,10 @@ const EditorTxSegwit = ({
       {/* vins */}
       <Row>
         <VinInputs
+          values={ values } // for getUtxoDetail
           openUtxoModal={ openUtxoModal }
           openSignatureModal={ openSignatureModal }
-          updateAmounts={ updateAmounts }
+          getUtxoDetail={ getUtxoDetail }
         />
       </Row>
 

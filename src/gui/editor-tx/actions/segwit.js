@@ -82,12 +82,21 @@ export const receiveSelectedTemplate = (idx, template) => (
   Actions.receiveSelectedTemplate(types, idx, template)
 );
 
-// vin amount
+// vin: amount, scriptPubKey
+export const getUtxoDetail = (idx, txid, n) => (
+  Actions.getUtxoDetail(types, idx, txid, n)
+);
+
+export const receiveUtxoDetail = (idx, amount, scriptPubKey) => (
+  Actions.receiveUtxoDetail(types, idx, amount, scriptPubKey)
+);
+
+// vin: amount
 export const receiveVinAmount = (idx) => (
   Actions.receiveVinAmount(types, idx)
 );
 
-// vout value
+// vout: value
 export const updateVoutValue = (idx) => (
   Actions.updateVoutValue(types, idx)
 );

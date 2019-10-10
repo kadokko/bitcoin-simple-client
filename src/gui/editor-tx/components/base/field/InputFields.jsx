@@ -28,7 +28,7 @@ const FormField = ({ label, mark='', func, icon, readonly=false, children }) => 
   </Form>
 );
 
-export const TextInputField = ({ label, readonly=false, name, type='text', placeholder='', validator }) => (
+export const TextInputField = ({ label, readonly=false, name, type='text', placeholder='', validator, onBlur }) => (
   <FormField
     label={ label }
     readonly={ readonly }
@@ -40,6 +40,7 @@ export const TextInputField = ({ label, readonly=false, name, type='text', place
       disabled={ readonly }
       placeholder={ placeholder }
       validate={ validator }
+      onBlur={ onBlur }
     />
   </FormField>
 );

@@ -1,5 +1,6 @@
 import { store } from 'gui/app/store/configureStore';
 import BitcoinRpc from 'lib/rpc/BitcoinRpc';
+import Unit from 'lib/util/Unit';
 import Validator from 'lib/util/Validator';
 import ScriptAnalizer from 'lib/util/ScriptAnalizer';
 
@@ -53,4 +54,12 @@ export const generateBlocks = async (num) => {
 export const getNewAddress = async (addrType='bech32') => {
   const { payload: { data: address } } = await post('getnewaddress', [ '', addrType ]);
   return address;
+};
+
+export const getTxOut = async (txid, n) => {
+  const { payload: { data: txout } } = await post('gettxout', [ txid, parseInt(n, 10) ]);
+  return {
+    amount: txout != null ? Unit.toSat(txout.value) : '',
+    scriptPubKey: txout != null ? txout.scriptPubKey.asm : '',
+  };
 };

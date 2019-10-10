@@ -36,7 +36,8 @@ const receiveVinAmount = (state, action) => {
   const { payload: p } = action;
   const vins = [ ...state.values.vins ];
   const vin = vins[p.idx];
-  vin.amountBtc = Num.exponentToDecimal(Unit.toBtc(vin.amount)) + ' BTC';
+  const amountBtc = vin.amount !== '' ? Num.exponentToDecimal(Unit.toBtc(vin.amount)) : '0';
+  vin.amountBtc = amountBtc + ' BTC';
   return {
     ...state,
     values: {
@@ -60,6 +61,21 @@ const receiveAmounts = (state) => {
     values: {
       ...state.values,
       amounts,
+    },
+  };
+};
+
+const receiveUtxoDetail = (state, action) => {
+  const { payload: p } = action;
+  const vins = [ ...state.values.vins ];
+  const vin = vins[p.idx];
+  vin.amount = p.amount;
+  vin.scriptPubKeyAsm = p.scriptPubKey;
+  return {
+    ...state,
+    values: {
+      ...state.values,
+      vins,
     },
   };
 };
@@ -128,6 +144,10 @@ const handleAction = (state, action, actionTypes) => {
 
     case actionTypes.REDUCER_RECEIVE_AMOUNTS: {
       return receiveAmounts(state);
+    }
+
+    case actionTypes.REDUCER_RECEIVE_UTXO_DETAIL: {
+      return receiveUtxoDetail(state, action);
     }
 
     case actionTypes.REDUCER_RECEIVE_VOUT_VALUE: {
