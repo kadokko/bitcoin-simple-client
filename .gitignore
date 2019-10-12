@@ -1,4 +1,6 @@
 .vscode/
+.vagrant/
+.DS_Store
+*.log
 node_modules/
 coverage/
-.DS_Store
