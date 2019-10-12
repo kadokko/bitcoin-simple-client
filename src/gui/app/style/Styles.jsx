@@ -161,7 +161,7 @@ export const styles = theme => ({
   // modal
   // ============================
   utxoDialogPaper: {
-    width: 520,
+    width: 525,
   },
   templatePaper: {
     padding: theme.spacing(1/5),
@@ -174,7 +174,6 @@ export const styles = theme => ({
     boxShadow: 'none',
   },
   utxoDialogTable: {
-    padding: theme.spacing(1/5),
     width: 500,
   },
   templateTable: {

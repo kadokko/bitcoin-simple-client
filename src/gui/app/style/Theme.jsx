@@ -140,5 +140,16 @@ export const theme = createMuiTheme({
         padding: 10,
       },
     },
+    MuiTablePagination: {
+      root: {
+        '&:last-child': {
+          padding: 0,
+          borderBottomWidth: 0,
+        },
+      },
+      toolbar: {
+        height: 30,
+      },
+    },
   },
 });

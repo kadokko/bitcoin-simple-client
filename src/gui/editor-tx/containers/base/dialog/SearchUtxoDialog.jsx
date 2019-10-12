@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
-import { Paper, Table, TableHead, TableBody, TableRow } from '@material-ui/core';
+import { Paper, Table, TableHead, TableBody, TableRow, TablePagination } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import { Div, Span } from 'gui/app/components/base';
 import { BasicBtn, SquareIconBtn as squareIconBtn } from 'gui/app/components/button';
@@ -80,11 +80,12 @@ export const SearchUtxoDialog = ({
   classes,
 }) => {
 
+  // search condition
   const amountMinRef = useRef(null);
   const amountMaxRef = useRef(null);
   const [ scriptTypes, setScriptTypes ] = useState([ '' ]);
 
-  const handleChange = (e) => {
+  const handleChangeScriptTypes = (e) => {
     const checked = e.target.value;
     if (scriptTypes.indexOf(checked) > -1) {
       setScriptTypes(scriptTypes.filter((s) => s !== checked));
@@ -92,6 +93,11 @@ export const SearchUtxoDialog = ({
       setScriptTypes([ ...scriptTypes, checked ]);
     }
   };
+
+  // pagination
+  const [ page, setPage ] = useState(0);
+  const [ rowsPerPage ] = useState(5);
+  const handleChangePage = (e, p) => setPage(p);
 
   return (
     <div>
@@ -111,7 +117,7 @@ export const SearchUtxoDialog = ({
                       key={ entry[0] }
                       label={ entry[0] }
                       checked={ scriptTypes.indexOf(entry[0]) > -1 }
-                      onChange={ e => handleChange(e) }
+                      onChange={ e => handleChangeScriptTypes(e) }
                     />
                   ))}
               </CheckboxGroup>
@@ -150,7 +156,10 @@ export const SearchUtxoDialog = ({
           <Margin />
 
           <Paper className={ classes.utxoDialogPaper }>
-            <Table className={ classes.utxoDialogTable }>
+            <Table
+              className={ classes.utxoDialogTable }
+              stickyHeader
+            >
               <ColGroup>
                 <Col width="70px" />
                 <Col width="70px" />
@@ -160,7 +169,7 @@ export const SearchUtxoDialog = ({
                 <Col width="40px" />
               </ColGroup>
               <TableHead>
-                { utxos && utxos.length !== 0 && (
+                { utxos && utxos.length > 0 && (
                   <TableRow>
                     <HeaderCell />
                     <HeaderCell>ScriptType</HeaderCell>
@@ -172,7 +181,7 @@ export const SearchUtxoDialog = ({
                 )}
               </TableHead>
               <TableBody>
-                { utxos && utxos.map(utxo => (
+                { utxos && utxos.slice(page * rowsPerPage, (page + 1) * rowsPerPage).map(utxo => (
                   <TableRow key={ utxo.txid + utxo.vout }>
                     <StrCell>
                       <BasicBtn
@@ -191,6 +200,15 @@ export const SearchUtxoDialog = ({
                 ))}
               </TableBody>
             </Table>
+            { utxos && utxos.length > 0 && (
+              <TablePagination
+                count={ utxos.length }
+                page={ page }
+                rowsPerPage={ rowsPerPage }
+                rowsPerPageOptions={ [ rowsPerPage ] }
+                onChangePage={ handleChangePage }
+              />
+            )}
           </Paper>
           <ErrorMessage>
             { error && error.message }
