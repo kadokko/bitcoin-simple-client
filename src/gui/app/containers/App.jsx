@@ -6,7 +6,7 @@ import { VpnKeyIcon, LockIcon, EditIcon, AddBoxIcon, SettingsIcon } from 'gui/ap
 import { Div } from 'gui/app/components/base';
 import { styles } from 'gui/app/style/Styles';
 import Key from 'gui/key/containers/Key';
-import BitcoinHdKey from 'gui/hdkey/containers/BitcoinHdKey';
+import HdKey from 'gui/hdkey/containers/HdKey';
 import Script from 'gui/script/containers/Script';
 import EditorTxStandard from 'gui/editor-tx/containers/standard/EditorTxStandard';
 import EditorTxSegwit from 'gui/editor-tx/containers/segwit/EditorTxSegwit';
@@ -97,7 +97,7 @@ const App = ({ classes }) => {
       )}
       { tabNo === 1 && (
         <TabContainer>
-          <BitcoinHdKey />
+          <HdKey />
         </TabContainer>
       )}
       { tabNo === 2 && (
