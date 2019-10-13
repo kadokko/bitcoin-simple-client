@@ -63,3 +63,12 @@ export const getTxOut = async (txid, n) => {
     scriptPubKey: txout != null ? txout.scriptPubKey.asm : '',
   };
 };
+
+export const getRawTransaction = async (txid) => {
+  const { payload: { data: tx } } = await post('getrawtransaction', [ txid, 1 ]);
+  return tx;
+};
+
+export const importAddress = async (address) => {
+  post('importaddress', [ address ]);
+};

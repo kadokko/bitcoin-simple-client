@@ -5,7 +5,7 @@ import Hash from 'lib/util/Hash';
 import Num from 'lib/util/Num';
 
 
-export class SigHash {
+class SigHash {
 
   static create(tx, i, sigHashType=SigHashType.ALL) {
     const target = this.createPreImage(tx, i);
@@ -22,3 +22,5 @@ export class SigHash {
   }
 
 }
+
+export default SigHash;

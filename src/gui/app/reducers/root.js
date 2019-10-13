@@ -9,6 +9,7 @@ import { standardSigForm, segwitSigForm } from 'gui/editor-tx/reducers/sig';
 import { configForm } from 'gui/config/reducers/form';
 import { keyForm } from 'gui/key/reducers/form';
 import { hdkeyForm } from 'gui/hdkey/reducers/form';
+import { scriptForm } from 'gui/script/reducers/form';
 
 
 const rootReducer = combineReducers({
@@ -22,6 +23,7 @@ const rootReducer = combineReducers({
     ...configForm,
     ...keyForm,
     ...hdkeyForm,
+    ...scriptForm,
     ...standardForm,
     ...standardSigForm,
     ...segwitForm,

@@ -1,3 +1,4 @@
+import { SigHashType } from 'lib/constant';
 import Hash from 'lib/util/Hash';
 import Hex from 'lib/util/Hex';
 import Num from 'lib/util/Num';
@@ -6,7 +7,7 @@ import VarInt from 'lib/util/VarInt';
 
 export class SigHashPreImage {
 
-  constructor(tx, hashtype=1) {
+  constructor(tx, hashtype=SigHashType.ALL) {
     this.vins = tx.vins;
     this.vouts = tx.vouts;
     this.version = tx.version;
