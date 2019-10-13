@@ -49,7 +49,7 @@ const LowTextArea = withStyles(() => ({
 }))(TextArea);
 
 
-const BitcoinHdKey = ({
+const HdKey = ({
   forms: {
     values,
     // syncErrors,
@@ -230,7 +230,7 @@ const Connected = connect(
   dispatch => ({
     actions: bindActionCreators(actionDefs, dispatch),
   }),
-)(BitcoinHdKey);
+)(HdKey);
 
 export default reduxForm({
   form: 'hdkeyForm',
