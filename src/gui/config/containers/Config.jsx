@@ -31,12 +31,12 @@ const Config = ({
   },
 }) => (
   <div>
-    <Box mb={1}>
+    <Box>
       <RpcSwitch
         changeBtcNode={ changeBtcNode }
       />
     </Box>
-    <Box mb={1}>
+    <Box>
       <Input
         label="rpc url"
         name="rpcurl"
@@ -44,7 +44,7 @@ const Config = ({
         readOnly
       />
     </Box>
-    <Box mb={1}>
+    <Box>
       <Input
         label="rpc username"
         name="rpcuser"
@@ -52,7 +52,7 @@ const Config = ({
         readOnly
       />
     </Box>
-    <Box mb={1}>
+    <Box>
       <Input
         label="rpc password"
         name="rpcpass"

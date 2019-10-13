@@ -35,21 +35,21 @@ const Config = ({
     <form
       onSubmit={ handleSubmit(updateConfig) }
     >
-      <Box mb={1}>
+      <Box>
         <Field
           component={ Input }
           label="rpc url"
           name="rpcurl"
         />
       </Box>
-      <Box mb={1}>
+      <Box>
         <Field
           component={ Input }
           label="rpc username"
           name="rpcuser"
         />
       </Box>
-      <Box mb={1}>
+      <Box>
         <Field
           component={ Input }
           label="rpc password"
@@ -59,7 +59,7 @@ const Config = ({
           }}
         />
       </Box>
-      <Box mb={1}>
+      <Box>
         <BasicBtn
           label="update"
           type="submit"

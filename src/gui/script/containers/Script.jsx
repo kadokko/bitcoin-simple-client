@@ -44,12 +44,12 @@ const Script = ({
   },
 }) => (
   <form>
-    <Box mb={1}>
+    <Box>
       <Title>
         P2wsh Utxo Creator
       </Title>
     </Box>
-    <Box mb={1}>
+    <Box>
       <Field
         label="redeem script"
         name="redeemScriptAsm"
@@ -64,7 +64,7 @@ const Script = ({
         }}
       />
     </Box>
-    <Box mb={1}>
+    <Box>
       <Field
         component={ TextArea }
         label="redeem script (hex)"
@@ -72,7 +72,7 @@ const Script = ({
         readOnly
       />
     </Box>
-    <Box mb={1}>
+    <Box>
       <Field
         component={ TextArea }
         label="scriptPubKey"
@@ -80,7 +80,7 @@ const Script = ({
         readOnly
       />
     </Box>
-    <Box mb={1}>
+    <Box>
       <Field
         component={ TextArea }
         label="scriptPubKey (hex)"
@@ -88,7 +88,7 @@ const Script = ({
         readOnly
       />
     </Box>
-    <Box mb={1}>
+    <Box>
       <Field
         component={ Input }
         label="p2wsh address"
@@ -96,7 +96,7 @@ const Script = ({
         readOnly
       />
     </Box>
-    <Box mb={1}>
+    <Box>
       <Field
         component={ Input }
         label="utxo: txid"
@@ -104,7 +104,7 @@ const Script = ({
         readOnly
       />
     </Box>
-    <Box mb={1}>
+    <Box>
       <Field
         component={ Input }
         label="utxo: n"
