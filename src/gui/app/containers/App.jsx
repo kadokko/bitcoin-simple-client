@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import { AppBar, Toolbar, Typography, Tabs, Tab } from '@material-ui/core';
 import { TabContainer } from 'gui/app/components/container';
-import { EditIcon, AddBoxIcon, SettingsIcon, VpnKeyIcon } from 'gui/app/components/icon';
+import { VpnKeyIcon, LockIcon, EditIcon, AddBoxIcon, SettingsIcon } from 'gui/app/components/icon';
 import { Div } from 'gui/app/components/base';
 import { styles } from 'gui/app/style/Styles';
 import Key from 'gui/key/containers/Key';
 import BitcoinHdKey from 'gui/hdkey/containers/BitcoinHdKey';
+import Script from 'gui/script/containers/Script';
 import EditorTxStandard from 'gui/editor-tx/containers/standard/EditorTxStandard';
 import EditorTxSegwit from 'gui/editor-tx/containers/segwit/EditorTxSegwit';
 import Block from 'gui/block/containers/Block';
@@ -45,16 +46,24 @@ const App = ({ classes }) => {
               textColor="primary"
             >
               <IconTab
+                label="Key"
+                icon={<VpnKeyIcon />}
+              />
+              <IconTab
+                label="Hd Key"
+                icon={<VpnKeyIcon />}
+              />
+              <IconTab
+                label="Utxo"
+                icon={<LockIcon />}
+              />
+              <IconTab
                 label="Std Tx"
                 icon={<EditIcon />}
               />
               <IconTab
                 label="Segwit Tx"
                 icon={<EditIcon />}
-              />
-              <IconTab
-                label="Key"
-                icon={<VpnKeyIcon />}
               />
               <IconTab
                 label="Block"
@@ -66,10 +75,6 @@ const App = ({ classes }) => {
                 icon={<SearchIcon />}
               />
               */}
-              <IconTab
-                label="Hd Key"
-                icon={<VpnKeyIcon />}
-              />
               <IconTab
                 label="Settings"
                 icon={<SettingsIcon />}
@@ -87,30 +92,35 @@ const App = ({ classes }) => {
 
       { tabNo === 0 && (
         <TabContainer>
-          <EditorTxStandard />
+          <Key />
         </TabContainer>
       )}
       { tabNo === 1 && (
         <TabContainer>
-          <EditorTxSegwit />
+          <BitcoinHdKey />
         </TabContainer>
       )}
       { tabNo === 2 && (
         <TabContainer>
-          <Key />
+          <Script />
         </TabContainer>
       )}
       { tabNo === 3 && (
         <TabContainer>
-          <Block />
+          <EditorTxStandard />
         </TabContainer>
       )}
       { tabNo === 4 && (
         <TabContainer>
-          <BitcoinHdKey />
+          <EditorTxSegwit />
         </TabContainer>
       )}
       { tabNo === 5 && (
+        <TabContainer>
+          <Block />
+        </TabContainer>
+      )}
+      { tabNo === 6 && (
         <TabContainer>
           <Config />
         </TabContainer>

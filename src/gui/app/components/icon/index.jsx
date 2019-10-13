@@ -13,6 +13,7 @@ export { FlashOn as FlashOnIcon } from '@material-ui/icons';
 export { Info as InfoIcon } from '@material-ui/icons';
 export { IndeterminateCheckBox as RemoveBox } from '@material-ui/icons';
 export { ListAlt as Template } from '@material-ui/icons';
+export { Lock as LockIcon } from '@material-ui/icons';
 export { PlayArrow as PlayIcon } from '@material-ui/icons';
 export { Search } from '@material-ui/icons';
 export { Search as SearchIcon } from '@material-ui/icons';
