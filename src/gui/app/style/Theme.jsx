@@ -93,7 +93,7 @@ export const theme = createMuiTheme({
     },
     MuiMenuItem: {
       root: {
-        height: 8,
+        height: 30,
         minHeight: 30,
       },
     },
@@ -101,6 +101,11 @@ export const theme = createMuiTheme({
       labelIcon: {
         paddingTop: 0,
         minHeight: 50,
+      },
+      root: {
+        '@media (min-width:600px)': {
+          minWidth: 100,
+        },
       },
     },
     MuiPrivateTextarea: {

@@ -56,7 +56,7 @@ const ScriptEditor = ({ classes, ...props }) => {
   };
 
   return (
-    <div>
+    <span>
       { isOpen && (
         <FormControl
           className={ classes.assist }
@@ -87,7 +87,7 @@ const ScriptEditor = ({ classes, ...props }) => {
         rowsMax={ 3 }
         onChange={ (e) => suggestOpCode(e) }
       />
-    </div>
+    </span>
   );
 };
 

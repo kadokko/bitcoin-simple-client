@@ -1,9 +1,8 @@
 import { call, takeLatest, put } from 'redux-saga/effects';
 import { AddrPrefix } from 'lib/constant';
 import { Vin, Vout, Script } from 'lib/model/base';
-import { Tx as StdTx } from 'lib/model/standard';
+import { Tx as StdTx, SigHash as StdSigHash } from 'lib/model/standard';
 import { Tx as SegTx, Witness, SigHashPreImage } from 'lib/model/segwit';
-import { SigHash as StdSigHash } from 'lib/model/standard/SigHash';
 import { Bech32 } from 'lib/util/Bech32';
 import { TxMapper } from 'lib/util/Mapper';
 import { Signer } from 'lib/util/Sign';
