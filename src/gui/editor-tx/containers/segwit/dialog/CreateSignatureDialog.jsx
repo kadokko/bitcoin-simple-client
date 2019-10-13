@@ -60,7 +60,7 @@ const CreateSignatureDialog = ({
           >
             <Paper className={ classes.signatureDialogPaper }>
               <DivContainer>
-                <Box mb={1}>
+                <Box>
                   <Field
                     component={ Input }
                     label="public key (for finding private key)"
@@ -77,7 +77,7 @@ const CreateSignatureDialog = ({
               </DivContainer>
 
               <DivContainer>
-                <Box mb={1}>
+                <Box>
                   <Field
                     component={ Input }
                     label="private key *"
@@ -94,7 +94,7 @@ const CreateSignatureDialog = ({
               </DivContainer>
 
               <DivContainer>
-                <Box mb={1}>
+                <Box>
                   <Field
                     component={ TextArea }
                     label="script code *"
@@ -104,7 +104,7 @@ const CreateSignatureDialog = ({
               </DivContainer>
 
               <DivContainer>
-                <Box mb={1}>
+                <Box>
                   <Field
                     component={ Input }
                     label="amount *"
@@ -115,7 +115,7 @@ const CreateSignatureDialog = ({
               </DivContainer>
 
               <DivContainer>
-                <Box mb={1}>
+                <Box>
                   <Field
                     component={ TextArea }
                     label="signature"

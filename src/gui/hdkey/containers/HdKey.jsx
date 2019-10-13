@@ -64,13 +64,13 @@ const HdKey = ({
   return (
     <div>
       <form>
-        <Box mb={1}>
+        <Box>
           <Title>
             Wallet Seed
           </Title>
         </Box>
 
-        <Box mb={1}>
+        <Box>
           <Field
             component={ Input }
             label="seed"
@@ -88,7 +88,7 @@ const HdKey = ({
           </SquareIconBtn>
         </Box>
 
-        <Box mb={1}>
+        <Box>
           <Field
             component={ TextArea }
             label="mnemonic"
@@ -111,13 +111,13 @@ const HdKey = ({
           </SquareIconBtn>
         </Box>
 
-        <Box mb={1}>
+        <Box>
           <Title>
             Extended Key
           </Title>
         </Box>
 
-        <Box mb={1}>
+        <Box>
           <Field
             component={ LowTextArea }
             label="master/root private key"
@@ -130,7 +130,7 @@ const HdKey = ({
           />
         </Box>
 
-        <Box mb={1}>
+        <Box>
           <Field
             component={ LowTextArea }
             label="master/root public key"
@@ -142,7 +142,7 @@ const HdKey = ({
           />
         </Box>
 
-        <Box mb={1}>
+        <Box>
           <Field
             component={ Input }
             label="hd path"
@@ -151,7 +151,7 @@ const HdKey = ({
           />
         </Box>
 
-        <Box mb={1}>
+        <Box>
           <Field
             component={ LowTextArea }
             label="extended private key"
@@ -169,7 +169,7 @@ const HdKey = ({
           />
         </Box>
 
-        <Box mb={1}>
+        <Box>
           <Field
             component={ LowTextArea }
             label="extended public key"
@@ -187,13 +187,13 @@ const HdKey = ({
           />
         </Box>
 
-        <Box mb={1}>
+        <Box>
           <Title>
             Address
           </Title>
         </Box>
 
-        <Box mb={1}>
+        <Box>
           <Field
             component={ Input }
             label="p2pkh address"
@@ -210,7 +210,7 @@ const HdKey = ({
           />
         </Box>
 
-        <Box mb={1}>
+        <Box>
           <Field
             component={ Input }
             label="p2wpkh address"

@@ -59,7 +59,7 @@ const CreateSignatureDialog = ({
             closeDialog={ closeSignatureModal }
           >
             <DivContainer>
-              <Box mb={1}>
+              <Box>
                 <Field
                   component={ Input }
                   label="public key (for finding private key)"
@@ -76,7 +76,7 @@ const CreateSignatureDialog = ({
               </Box>
             </DivContainer>
             <DivContainer>
-              <Box mb={1}>
+              <Box>
                 <Field
                   component={ Input }
                   label="public key hash160 (for finding private key)"
@@ -92,7 +92,7 @@ const CreateSignatureDialog = ({
               </Box>
             </DivContainer>
             <DivContainer>
-              <Box mb={1}>
+              <Box>
                 <Field
                   component={ Input }
                   label="private key *"
@@ -108,7 +108,7 @@ const CreateSignatureDialog = ({
               </Box>
             </DivContainer>
             <DivContainer>
-              <Box mb={1}>
+              <Box>
                 <Field
                   component={ TextArea }
                   label="signature"

@@ -17,13 +17,13 @@ const renderAddrAndKeys = ({ fields }) => (
   <div>
     { fields.map((field, index) => (
       <div key={ field.pubkey }>
-        <Box mb={1}>
+        <Box>
           <Title>
             key
             { index + 1 }
           </Title>
         </Box>
-        <Box mb={1}>
+        <Box>
           <Field
             component={ Input }
             label="p2wpkh address"
@@ -31,7 +31,7 @@ const renderAddrAndKeys = ({ fields }) => (
             readOnly
           />
         </Box>
-        <Box mb={1}>
+        <Box>
           <Field
             component={ Input }
             label="public key"
@@ -39,7 +39,7 @@ const renderAddrAndKeys = ({ fields }) => (
             readOnly
           />
         </Box>
-        <Box mb={1}>
+        <Box>
           <Field
             component={ Input }
             label="private key"
@@ -61,12 +61,12 @@ const Key = ({
   },
 }) => (
   <form>
-    <Box mb={1}>
+    <Box>
       <Title>
         key creator
       </Title>
     </Box>
-    <Box mb={1}>
+    <Box>
       <Field
         component={ Select }
         label="num"
