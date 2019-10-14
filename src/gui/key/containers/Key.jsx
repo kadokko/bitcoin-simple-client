@@ -2,16 +2,25 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Field, FieldArray, reduxForm } from 'redux-form';
-import { MenuItem } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
-import { BasicBtn } from 'gui/app/components/button';
+import { BasicBtn as basicBtn } from 'gui/app/components/button';
+import { Input } from 'gui/app/components/field/redux-form';
 import { Title } from 'gui/app/components/label';
+import { Box, Margin } from 'gui/app/components/layout';
 import { styles } from 'gui/app/style/Styles';
-import { Input, SelectField as Select } from 'gui/app/components/field/redux-form';
-import { Box } from 'gui/app/components/layout';
-import Seq from 'lib/util/Seq';
 import * as actionDefs from '../actions/key';
 
+
+const BasicBtn = withStyles(() => ({
+  basicButton: {
+    lineHeight: 1.5,
+    marginTop: 8,
+    marginLeft: 5,
+    paddingRight: 5,
+    paddingLeft: 5,
+    height: 38,
+  },
+}))(basicBtn);
 
 const renderAddrAndKeys = ({ fields }) => (
   <div>
@@ -53,9 +62,6 @@ const renderAddrAndKeys = ({ fields }) => (
 );
 
 const Key = ({
-  forms: {
-    values,
-  },
   actions: {
     createAddrAndKeys,
   },
@@ -67,31 +73,26 @@ const Key = ({
       </Title>
     </Box>
     <Box>
-      <Field
-        component={ Select }
-        label="num"
-        name="num"
-      >
-        { Seq.generate(3).map((v) => (
-          <MenuItem
-            key={ 'keys' + v }
-            value={ v + 1 }
-          >
-            { v + 1 }
-          </MenuItem>
-        ))}
-      </Field>
       <BasicBtn
-        label="create"
-        type="button"
-        onClick={ () => createAddrAndKeys(values.num) }
+        label="+1"
+        onClick={ () => createAddrAndKeys(1) }
+      />
+      <BasicBtn
+        label="+2"
+        onClick={ () => createAddrAndKeys(2) }
+      />
+      <BasicBtn
+        label="+3"
+        onClick={ () => createAddrAndKeys(3) }
       />
     </Box>
-
-    <FieldArray
-      name="keys"
-      component={ renderAddrAndKeys }
-    />
+    <Margin />
+    <Box>
+      <FieldArray
+        name="keys"
+        component={ renderAddrAndKeys }
+      />
+    </Box>
   </form>
 );
 
