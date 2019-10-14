@@ -7,6 +7,7 @@ import { BasicBtn, SquareIconBtn as squareIconBtn } from 'gui/app/components/but
 import { ModalDialog } from 'gui/app/components/dialog';
 import { Input, CheckboxGroup, Checkbox } from 'gui/app/components/field/form';
 import { Search } from 'gui/app/components/icon';
+import { Margin } from 'gui/app/components/layout';
 import { Col, ColGroup, HeaderCell, StrCell, NumCell } from 'gui/app/components/table';
 import { ErrorMessage } from 'gui/app/components/message';
 import { ScriptType } from 'lib/constant';
@@ -52,12 +53,6 @@ const CondItem = withStyles(() => ({
   root: {
     display: 'table-cell',
     verticalAlign: 'middle',
-  },
-}))(Div);
-
-const Margin = withStyles(() => ({
-  root: {
-    height: 20,
   },
 }))(Div);
 
