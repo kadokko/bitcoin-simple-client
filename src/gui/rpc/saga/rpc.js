@@ -51,6 +51,11 @@ export const generateBlocks = async (num) => {
   return blockId;
 };
 
+export const getBlockCount = async () => {
+  const { payload: { data: blockCount } } = await post('getblockcount', []);
+  return blockCount;
+};
+
 export const getNewAddress = async (addrType='bech32') => {
   const { payload: { data: address } } = await post('getnewaddress', [ '', addrType ]);
   return address;
