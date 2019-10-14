@@ -25,6 +25,7 @@ const Block = ({ states, actions }) => {
 
   useEffect(() => {
     actions.getBlockCount();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ states.blockCount ]);
 
   return (
