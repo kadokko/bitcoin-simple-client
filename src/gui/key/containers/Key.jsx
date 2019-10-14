@@ -16,7 +16,7 @@ import * as actionDefs from '../actions/key';
 const renderAddrAndKeys = ({ fields }) => (
   <div>
     { fields.map((field, index) => (
-      <div key={ field.pubkey }>
+      <div key={`${field}.pubkey`}>
         <Box>
           <Title>
             key
