@@ -29,7 +29,7 @@ You can use [this environment](https://github.com/kadokko/env-multi-bitcoin).
 
 ## Usage
 
-* How to setup
+* How to build (electron application)
 
 ```sh
 git clone https://github.com/kadokko/bitcoin-simple-client.git
@@ -40,17 +40,37 @@ vagrant ssh
 
 cd /vagrant_share
 ./setup.sh
+
+// linux
+npm run build:linux
+(-> dist/bitcoin-simple-client-{version}.zip)
+
+// windows
+npm run build:win
+(-> dist/bitcoin-simple-client {version}.exe)
 ```
 
-* How to run
+* How to run (electron application)
 
-```
-./start.sh
+```sh
+// linux
+unzip bitcoin-simple-client-{version}.zip
+cd bitcoin-simple-client-{version}
+./bitcoin-simple-client
+
+// windows
+double click "bitcoin-simple-client {version}.exe"
 ```
 
-* How to use
+* How to run (development)
 
-```
+```sh
+...
+
+./setup.sh
+
+npm run start:dev
+
 http://192.168.33.14:3000
 ```
 

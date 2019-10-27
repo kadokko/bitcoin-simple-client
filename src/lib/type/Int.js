@@ -5,6 +5,10 @@ import Validator from 'lib/util/Validator';
 
 const context = BN.red('k256');
 
+const hasProperty = (obj, name) => (
+  obj instanceof Object && Object.hasOwnProperty.call(obj, name)
+);
+
 class InnerInt {
 
   constructor(n, base) {
@@ -110,10 +114,12 @@ class InnerInt {
     if (Validator.isNumber(m)) {
       return new BN(m, 10);
     }
-    if (Validator.isClass(m, 'BN')) {
+    // BN
+    if (hasProperty(m, 'red')) {
       return m;
     }
-    if (Validator.isClass(m, 'InnerInt')) {
+    // InnerInt
+    if (hasProperty(m, 'toInt')) {
       return m.innerValue();
     }
     if (base===16 && Validator.isHex(m)) {
@@ -127,7 +133,6 @@ class InnerInt {
     }
     throw new Error('invalid value : [ ' + m + ' ]');
   }
-
 }
 
 export const Int = n => (new InnerInt(n, 16));

@@ -1,6 +1,9 @@
 {
   "name": "bitcoin-simple-client",
   "version": "0.0.1",
+  "description": "This application makes it easier to test bitcoin script",
+  "main": "src/main.js",
+  "homepage": ".",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.5.0",
@@ -26,22 +29,35 @@
   },
   "devDependencies": {
     "babel-eslint": "10.0.2",
+    "electron": "^6.0.12",
+    "electron-builder": "^21.2.0",
     "eslint-config-airbnb": "^18.0.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start:dev": "CHOKIDAR_USEPOLLING=true react-scripts start",
+    "start:electron": "electron .",
+    "lint": "eslint src/**/*.js*",
     "test": "react-scripts test --env=jsdom ",
-    "eject": "react-scripts eject",
-    "test:ci": "react-scripts test --env=node --silent=false --verbose false",
     "test:watch": "react-scripts test --env=node --silent=false --verbose false --watch",
-    "coverage": "react-scripts test --env=jsdom --coverage",
-    "lint": "eslint src/**/*.js*"
+    "test:coverage": "react-scripts test --env=jsdom --coverage",
+    "build": "react-scripts build",
+    "build:linux": "react-scripts build && electron-builder --linux zip --x64",
+    "build:mac": "react-scripts build && electron-builder --mac mas --x64",
+    "build:win": "react-scripts build && electron-builder --win portable --x64"
+  },
+  "build": {
+    "extends": null,
+    "files": [
+      "build",
+      "public",
+      "src/main.js"
+    ]
   },
   "browserslist": [
     ">0.2%",
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "author": "kadokko"
 }

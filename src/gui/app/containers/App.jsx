@@ -3,7 +3,6 @@ import { withStyles } from '@material-ui/core/styles';
 import { AppBar, Toolbar, Typography, Tabs, Tab } from '@material-ui/core';
 import { TabContainer } from 'gui/app/components/container';
 import { VpnKeyIcon, LockIcon, EditIcon, AddBoxIcon, SettingsIcon } from 'gui/app/components/icon';
-import { Div } from 'gui/app/components/base';
 import { styles } from 'gui/app/style/Styles';
 import Key from 'gui/key/containers/Key';
 import HdKey from 'gui/hdkey/containers/HdKey';
@@ -20,11 +19,6 @@ const IconTab = withStyles(() => ({
   },
 }))(Tab);
 
-const AppName = withStyles(() => ({
-  root: {
-    marginBottom: 10,
-  },
-}))(Div);
 
 const App = ({ classes }) => {
 
@@ -36,9 +30,6 @@ const App = ({ classes }) => {
       <AppBar position="static" color="default">
         <Toolbar variant="dense">
           <Typography variant="h6" color="inherit">
-            <AppName>
-              Bitcoin Simple Client
-            </AppName>
             <Tabs
               value={ tabNo }
               onChange={ (e, tabId) => setTabNo(tabId) }

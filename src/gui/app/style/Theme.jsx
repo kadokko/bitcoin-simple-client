@@ -23,6 +23,11 @@ export const theme = createMuiTheme({
     useNextVariants: true,
   },
   overrides: {
+    MuiAppBar: {
+      root: {
+        paddingTop: 12,
+      },
+    },
     MuiInputBase: {
       input: {
         '&:-webkit-autofill': {
@@ -48,6 +53,14 @@ export const theme = createMuiTheme({
           paddingRight: 10,
         },
         padding: '4px 12px 4px 12px',
+      },
+    },
+    MuiToolbar: {
+      gutters: {
+        '@media (min-width:600px)': {
+          paddingLeft: 5,
+          paddingRight: 5,
+        },
       },
     },
     MuiOutlinedInput: {
@@ -154,6 +167,9 @@ export const theme = createMuiTheme({
       },
       toolbar: {
         height: 30,
+      },
+      spacer: {
+        width: 15,
       },
     },
   },
