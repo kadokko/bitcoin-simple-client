@@ -2,5 +2,7 @@
 .vagrant/
 .DS_Store
 *.log
-node_modules/
+build/
 coverage/
+dist/
+node_modules/
