@@ -15,7 +15,9 @@ export const initialVout = {
   scriptPubKey: '',
 };
 
-const renderVoutInputs = ({ fields, ...custom }) => (
+const renderVoutInputs = ({
+  fields, openTemplateModal, updateAmounts, updateVoutValue, updateScriptWithSuggest,
+}) => (
   <div>
     <RowLabel>
       <div>
@@ -41,7 +43,7 @@ const renderVoutInputs = ({ fields, ...custom }) => (
             <div>
               <IconBtn
                 label="search script template"
-                onClick={ () => custom.openTemplateModal(index) }
+                onClick={ () => openTemplateModal(index) }
               >
                 <Template />
               </IconBtn>
@@ -53,8 +55,8 @@ const renderVoutInputs = ({ fields, ...custom }) => (
               name={`${vout}.value`}
               validator={[ validator.isAmount ]}
               onBlur={ () => {
-                custom.updateAmounts();
-                custom.updateVoutValue(index);
+                updateAmounts();
+                updateVoutValue(index);
               }}
             />
             <TextAreaWithAssistField
@@ -63,7 +65,7 @@ const renderVoutInputs = ({ fields, ...custom }) => (
               component={ ScriptEditor }
               validator={[ validator.isScript ]}
               onChange={ (value) => {
-                custom.updateScriptWithSuggest(value);
+                updateScriptWithSuggest(value);
               }}
             />
           </ContentFields>
