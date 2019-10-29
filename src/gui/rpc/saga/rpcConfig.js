@@ -1,14 +1,14 @@
 export const rpcConfig = {
   node1: {
     node: 'node1',
-    rpcurl: 'http://192.168.33.11:5000',
-    rpcuser: 'user',
-    rpcpass: 'password',
+    rpcurl:  process.env.REACT_APP_BTC_NODE1_RPC_URL,
+    rpcuser: process.env.REACT_APP_BTC_NODE1_RPC_USER,
+    rpcpass: process.env.REACT_APP_BTC_NODE1_RPC_PASS
   },
   node2: {
     node: 'node2',
-    rpcurl: 'http://192.168.33.11:5001',
-    rpcuser: 'user',
-    rpcpass: 'password',
+    rpcurl:  process.env.REACT_APP_BTC_NODE2_RPC_URL,
+    rpcuser: process.env.REACT_APP_BTC_NODE2_RPC_USER,
+    rpcpass: process.env.REACT_APP_BTC_NODE2_RPC_PASS
   },
 };
