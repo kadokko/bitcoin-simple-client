@@ -1,4 +1,6 @@
 import { call, takeLatest, put } from 'redux-saga/effects';
+import { safen } from 'gui/app/saga/effects';
+import { createErrorPayload } from 'gui/app/saga/helper';
 import { AddrPrefix } from 'lib/constant';
 import { Vin, Vout, Script } from 'lib/model/base';
 import { Tx as StdTx, SigHash as StdSigHash } from 'lib/model/standard';
@@ -18,16 +20,11 @@ import * as stdActionTypes from '../actions/standard-types';
 import * as segActionTypes from '../actions/segwit-types';
 
 
-const createError = (code, message) => ({
-  code,
-  message,
-});
-
 function* searchUtxos(type, action) {
   const { payload: p } = action;
   const utxos = yield call(rpc.searchUtxos, p.amountMin, p.amountMax, p.scriptTypes);
   if (utxos.length === 0) {
-    const e = createError('', 'Utxos are not found');
+    const e = createErrorPayload('', 'Utxos are not found');
     yield put(type.receiveUtxosError(e));
   } else {
     yield put(type.receiveUtxos(utxos));
@@ -171,27 +168,27 @@ function* sendTx(type, action) {
 }
 
 export const standardSaga = [
-  takeLatest(stdActionTypes.USER_SEARCH_UTXOS, searchUtxos, std),
-  takeLatest(stdActionTypes.USER_SET_UTXO, setUtxo, std),
-  takeLatest(stdActionTypes.USER_GET_UTXO_DETAIL, getUtxoDetail, std),
-  takeLatest(stdActionTypes.USER_DUMP_PRVKEY, dumpPrvkeyForStandardTx, std),
+  takeLatest(stdActionTypes.USER_SEARCH_UTXOS, safen(searchUtxos, std)),
+  takeLatest(stdActionTypes.USER_SET_UTXO, safen(setUtxo, std)),
+  takeLatest(stdActionTypes.USER_GET_UTXO_DETAIL, safen(getUtxoDetail, std)),
+  takeLatest(stdActionTypes.USER_DUMP_PRVKEY, safen(dumpPrvkeyForStandardTx, std)),
   takeLatest(stdActionTypes.USER_CERATE_SIGNATURE, createSignatureForStandardTx, std),
   takeLatest(stdActionTypes.USER_SET_SCRIPT_TEMPLATE, setScriptTemplate, std),
   takeLatest(stdActionTypes.USER_UPDATE_VOUT_VALUE, updateVoutValue, std),
   takeLatest(stdActionTypes.USER_UPDATE_SCRIPT_WITH_SUGGEST, updateScriptWithSuggest, std),
   takeLatest(stdActionTypes.USER_CONVERT_TO_TXHEX, convertToHexForStandardTx, std),
-  takeLatest(stdActionTypes.USER_SEND_TX, sendTx, std),
+  takeLatest(stdActionTypes.USER_SEND_TX, safen(sendTx, std)),
 ];
 
 export const segwitSaga = [
-  takeLatest(segActionTypes.USER_SEARCH_UTXOS, searchUtxos, seg),
-  takeLatest(segActionTypes.USER_SET_UTXO, setUtxo, seg),
-  takeLatest(segActionTypes.USER_GET_UTXO_DETAIL, getUtxoDetail, seg),
-  takeLatest(segActionTypes.USER_DUMP_PRVKEY, dumpPrvkeyForSegwitTx, seg),
+  takeLatest(segActionTypes.USER_SEARCH_UTXOS, safen(searchUtxos, seg)),
+  takeLatest(segActionTypes.USER_SET_UTXO, safen(setUtxo, seg)),
+  takeLatest(segActionTypes.USER_GET_UTXO_DETAIL, safen(getUtxoDetail, seg)),
+  takeLatest(segActionTypes.USER_DUMP_PRVKEY, safen(dumpPrvkeyForSegwitTx, seg)),
   takeLatest(segActionTypes.USER_CERATE_SIGNATURE, createSignatureForSegwitTx, seg),
   takeLatest(segActionTypes.USER_SET_SCRIPT_TEMPLATE, setScriptTemplate, seg),
   takeLatest(segActionTypes.USER_UPDATE_VOUT_VALUE, updateVoutValue, seg),
   takeLatest(segActionTypes.USER_UPDATE_SCRIPT_WITH_SUGGEST, updateScriptWithSuggest, seg),
   takeLatest(segActionTypes.USER_CONVERT_TO_TXHEX, convertToHexForSegwitTx, seg),
-  takeLatest(segActionTypes.USER_SEND_TX, sendTx, seg),
+  takeLatest(segActionTypes.USER_SEND_TX, safen(sendTx, seg)),
 ];

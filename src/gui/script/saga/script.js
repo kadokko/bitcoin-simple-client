@@ -1,4 +1,5 @@
 import { call, takeLatest, put } from 'redux-saga/effects';
+import { safen } from 'gui/app/saga/effects';
 import { Vin, Vout, Script, Utxo } from 'lib/model/base';
 import { Tx, SigHash } from 'lib/model/standard';
 import { Bech32 } from 'lib/util/Bech32';
@@ -61,5 +62,5 @@ function* createP2wsh(action) {
 }
 
 export const scriptSaga = [
-  takeLatest(actionTypes.USER_CREATE_P2WSH_UTXO, createP2wsh),
+  takeLatest(actionTypes.USER_CREATE_P2WSH_UTXO, safen(createP2wsh)),
 ];

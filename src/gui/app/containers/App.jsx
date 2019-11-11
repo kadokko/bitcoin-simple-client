@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
 import { AppBar, Toolbar, Typography, Tabs, Tab } from '@material-ui/core';
 import { TabContainer } from 'gui/app/components/container';
 import { VpnKeyIcon, LockIcon, EditIcon, AddBoxIcon, SettingsIcon } from 'gui/app/components/icon';
 import { styles } from 'gui/app/style/Styles';
+import * as actionDefs from 'gui/app/actions/app';
 import Key from 'gui/key/containers/Key';
 import HdKey from 'gui/hdkey/containers/HdKey';
 import Script from 'gui/script/containers/Script';
@@ -11,6 +14,7 @@ import EditorTxStandard from 'gui/editor-tx/containers/standard/EditorTxStandard
 import EditorTxSegwit from 'gui/editor-tx/containers/segwit/EditorTxSegwit';
 import Block from 'gui/block/containers/Block';
 import Config from 'gui/config/containers/Config';
+import Message from './Message';
 
 
 const IconTab = withStyles(() => ({
@@ -20,7 +24,12 @@ const IconTab = withStyles(() => ({
 }))(Tab);
 
 
-const App = ({ classes }) => {
+const App = ({
+  actions: {
+    resetErrorMessage,
+  },
+  classes,
+}) => {
 
   const defaultTabId = 0;
   const [ tabNo, setTabNo ] = useState(defaultTabId);
@@ -31,10 +40,13 @@ const App = ({ classes }) => {
         <Toolbar variant="dense">
           <Typography variant="h6" color="inherit">
             <Tabs
-              value={ tabNo }
-              onChange={ (e, tabId) => setTabNo(tabId) }
               indicatorColor="primary"
               textColor="primary"
+              value={ tabNo }
+              onChange={ (e, tab) => {
+                setTabNo(tab);
+                resetErrorMessage();
+              }}
             >
               <IconTab
                 label="Key"
@@ -59,13 +71,8 @@ const App = ({ classes }) => {
               <IconTab
                 label="Block"
                 icon={<AddBoxIcon />}
+                // icon={<SearchIcon />}
               />
-              {/*
-              <IconTab
-                label="Block"
-                icon={<SearchIcon />}
-              />
-              */}
               <IconTab
                 label="Settings"
                 icon={<SettingsIcon />}
@@ -80,6 +87,12 @@ const App = ({ classes }) => {
           </Typography>
         </Toolbar>
       </AppBar>
+
+      <div
+        onClick={ () => resetErrorMessage() }
+      >
+        <Message />
+      </div>
 
       { tabNo === 0 && (
         <TabContainer>
@@ -120,4 +133,12 @@ const App = ({ classes }) => {
   );
 };
 
-export default withStyles(styles)(App);
+const Connected = connect(
+  () => ({
+  }),
+  dispatch => ({
+    actions: bindActionCreators(actionDefs, dispatch),
+  }),
+)(App);
+
+export default withStyles(styles)(Connected);
