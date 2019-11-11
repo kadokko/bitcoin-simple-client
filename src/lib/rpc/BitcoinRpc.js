@@ -31,6 +31,11 @@ class BitcoinRpc {
       },
       error: false,
     })).catch(err => {
+      // unable to connect the node
+      if (typeof err === 'object' && err.toString().startsWith('Error: timeout of')) {
+        throw new Error('unable to connect to the bitcoin node');
+      }
+      // connected to the node but received error
       const res = err.response.data;
       const status = err.response.status;
       if (status === 500) {

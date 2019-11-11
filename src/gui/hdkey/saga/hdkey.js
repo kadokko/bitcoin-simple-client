@@ -1,4 +1,5 @@
 import { takeLatest, put } from 'redux-saga/effects';
+import { safen } from 'gui/app/saga/effects';
 import { AddrPrefix } from 'lib/constant';
 import { Seed, HDKey } from 'lib/model/base';
 import { Bech32 } from 'lib/util/Bech32';
@@ -12,10 +13,10 @@ import * as actionTypes from '../actions/hdkey-types';
 
 function* generateHdSeed() {
   const seed = Seed.generate();
-  yield put(h.receiveHdSeed(seed));
   const mnemonic = Mnemonic.toWords(seed);
-  yield put(h.receiveHdMnemonic(mnemonic));
   const hdkey = HDKey.generate(seed);
+  yield put(h.receiveHdSeed(seed));
+  yield put(h.receiveHdMnemonic(mnemonic));
   yield put(h.receiveHdMasterKeys(hdkey.extPrv(), hdkey.extPub()));
 }
 
@@ -23,8 +24,8 @@ function* getHdMasterKeysFromSeed(action) {
   const { payload: p } = action;
   if (Validator.isEmpty(p.seed)) return;
   const mnemonic = Mnemonic.toWords(p.seed);
-  yield put(h.receiveHdMnemonic(mnemonic));
   const hdkey = HDKey.generate(p.seed);
+  yield put(h.receiveHdMnemonic(mnemonic));
   yield put(h.receiveHdMasterKeys(hdkey.extPrv(), hdkey.extPub()));
 }
 
@@ -32,8 +33,8 @@ function* getHdMasterKeysFromMnemonic(action) {
   const { payload: p } = action;
   if (Validator.isEmpty(p.mnemonic)) return;
   const seed = Mnemonic.toEntropy(p.mnemonic);
-  yield put(h.receiveHdSeed(seed));
   const hdkey = HDKey.generate(seed);
+  yield put(h.receiveHdSeed(seed));
   yield put(h.receiveHdMasterKeys(hdkey.extPrv(), hdkey.extPub()));
 }
 
@@ -74,11 +75,11 @@ function* createP2wpkhAddr(action) {
 
 export const hdkeySaga = [
   takeLatest(actionTypes.USER_GEN_HD_SEED, generateHdSeed),
-  takeLatest(actionTypes.USER_GET_HD_MASTER_KEYS_FROM_SEED, getHdMasterKeysFromSeed),
-  takeLatest(actionTypes.USER_GET_HD_MASTER_KEYS_FROM_MNEMONIC, getHdMasterKeysFromMnemonic),
-  takeLatest(actionTypes.USER_GET_HD_MASTER_PUBKEY, getHdMasterPubkey),
-  takeLatest(actionTypes.USER_GET_HD_KEYS, createHdKeys),
-  takeLatest(actionTypes.USER_GET_HD_PUBKEY, createHdPubkey),
+  takeLatest(actionTypes.USER_GET_HD_MASTER_KEYS_FROM_SEED, safen(getHdMasterKeysFromSeed)),
+  takeLatest(actionTypes.USER_GET_HD_MASTER_KEYS_FROM_MNEMONIC, safen(getHdMasterKeysFromMnemonic)),
+  takeLatest(actionTypes.USER_GET_HD_MASTER_PUBKEY, safen(getHdMasterPubkey)),
+  takeLatest(actionTypes.USER_GET_HD_KEYS, safen(createHdKeys)),
+  takeLatest(actionTypes.USER_GET_HD_PUBKEY, safen(createHdPubkey)),
   takeLatest(actionTypes.USER_CREATE_P2PKH_ADDR, createP2pkhAddr),
   takeLatest(actionTypes.USER_CREATE_P2WPKH_ADDR, createP2wpkhAddr),
 ];

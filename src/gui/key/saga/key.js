@@ -1,4 +1,5 @@
-import { call, takeLatest, put } from 'redux-saga/effects';
+import { call, put, takeLatest } from 'redux-saga/effects';
+import { safen } from 'gui/app/saga/effects';
 import KeyConv from 'lib/util/KeyConv';
 import * as rpc from 'gui/rpc/saga/rpc';
 import * as k from '../actions/key';
@@ -19,5 +20,5 @@ function* createAddrAndKeys(action) {
 }
 
 export const keySaga = [
-  takeLatest(actionTypes.USER_CREATE_ADDR_AND_KEYS, createAddrAndKeys),
+  takeLatest(actionTypes.USER_CREATE_ADDR_AND_KEYS, safen(createAddrAndKeys)),
 ];
