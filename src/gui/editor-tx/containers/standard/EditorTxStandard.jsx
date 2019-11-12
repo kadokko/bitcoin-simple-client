@@ -1,9 +1,8 @@
 import React from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
 import { withStyles } from '@material-ui/core/styles';
 import { styles } from 'gui/app/style/Styles';
+import { connectf } from 'gui/app/containers/redux';
 import { Row, Area } from 'gui/editor-tx/components/base/layout';
 import { Input, VinInputs, VoutInputs, Fee, TxHex, Txid } from 'gui/editor-tx/components/base';
 import { validator as validate } from 'gui/editor-tx/validator/validator';
@@ -129,18 +128,13 @@ const EditorTxStandard = ({
   </div>
 );
 
-const Connected = connect(
-  state => ({
-    forms: state.form.standardForm,
-  }),
-  dispatch => ({
-    actions: bindActionCreators(actionDefs, dispatch),
-  }),
+const Connected = connectf(
+  'standardForm', actionDefs,
 )(EditorTxStandard);
 
 export default reduxForm({
   form: 'standardForm',
   destroyOnUnmount: false,
-  validate,
   initialValues: initialTxValues,
+  validate,
 })(withStyles(styles)(Connected));

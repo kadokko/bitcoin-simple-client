@@ -10,7 +10,7 @@ import { InputField, TextAreaField } from 'gui/app/components/field/redux-form';
 import { CopyIcon, PlayIcon } from 'gui/app/components/icon';
 import { Box } from 'gui/app/components/layout';
 import { connected } from 'gui/editor-tx/containers/base';
-import * as actions from 'gui/editor-tx/actions/standard';
+import * as actionDefs from 'gui/editor-tx/actions/standard';
 import { ViewHelper as Helper } from 'lib/view/ViewHelper';
 import Hash from 'lib/util/Hash';
 import Validator from 'lib/util/Validator';
@@ -140,11 +140,13 @@ CreateSignatureDialog.propTypes = {
   }),
 };
 
-const Connected = connected(CreateSignatureDialog, 'standard', actions);
+const Connected = connected(
+  CreateSignatureDialog, 'standard', actionDefs,
+);
 
 export default reduxForm({
   form: 'standardSigForm',
   destroyOnUnmount: true,
-  // validate,
   initialValues: {},
+  // validate,
 })(withStyles(styles)(Connected));

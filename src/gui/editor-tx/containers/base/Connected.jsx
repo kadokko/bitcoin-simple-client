@@ -4,7 +4,7 @@ import { withStyles } from '@material-ui/core/styles';
 import { styles } from 'gui/app/style/Styles';
 
 
-export const connected = (component, stateName, actions) => {
+export const connected = (component, stateName, actionDefs) => {
   const Connected = connect(
     state => ({
       states: state[stateName],
@@ -13,7 +13,7 @@ export const connected = (component, stateName, actions) => {
       sigStates: state.form[stateName + 'SigForm'],
     }),
     dispatch => ({
-      actions: bindActionCreators(actions, dispatch),
+      actions: bindActionCreators(actionDefs, dispatch),
     }),
   )(component);
   return withStyles(styles)(Connected);

@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
+import { connect } from 'gui/app/containers/redux';
 import { BasicBtn as basicBtn } from 'gui/app/components/button';
 import { Margin } from 'gui/app/components/layout';
 import * as actionDefs from '../actions/block';
@@ -58,10 +57,5 @@ const Block = ({ states, actions }) => {
 };
 
 export default connect(
-  state => ({
-    states: state.block,
-  }),
-  dispatch => ({
-    actions: bindActionCreators(actionDefs, dispatch),
-  }),
+  'block', actionDefs,
 )(Block);

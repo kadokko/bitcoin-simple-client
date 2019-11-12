@@ -1,8 +1,7 @@
 import React from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
 import { styles } from 'gui/app/style/Styles';
+import { connect } from 'gui/app/containers/redux';
 import { Input as InputField } from 'gui/app/components/field/form';
 import { Box } from 'gui/app/components/layout';
 import * as actionDefs from '../actions/config';
@@ -64,13 +63,9 @@ const Config = ({
   </div>
 );
 
+
 const Connected = connect(
-  state => ({
-    states: state.config,
-  }),
-  dispatch => ({
-    actions: bindActionCreators(actionDefs, dispatch),
-  }),
+  'config', actionDefs,
 )(Config);
 
 export default withStyles(styles)(Connected);

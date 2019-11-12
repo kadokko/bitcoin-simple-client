@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
+import { connect } from 'gui/app/containers/redux';
 import { AppBar, Toolbar, Typography, Tabs, Tab } from '@material-ui/core';
 import { TabContainer } from 'gui/app/components/container';
 import { VpnKeyIcon, LockIcon, EditIcon, AddBoxIcon, SettingsIcon } from 'gui/app/components/icon';
@@ -134,11 +133,7 @@ const App = ({
 };
 
 const Connected = connect(
-  () => ({
-  }),
-  dispatch => ({
-    actions: bindActionCreators(actionDefs, dispatch),
-  }),
+  null, actionDefs,
 )(App);
 
 export default withStyles(styles)(Connected);
