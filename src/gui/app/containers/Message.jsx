@@ -1,10 +1,11 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
 import { withStyles } from '@material-ui/core/styles';
 import { styles } from 'gui/app/style/Styles';
+import { connectf } from 'gui/app/containers/redux';
 import { Box } from 'gui/app/components/layout';
 import { ErrorMessage as errorMessage } from 'gui/app/components/message';
+import { initialValues } from './InitialValues';
 
 
 const ErrorMessage = withStyles(() => ({
@@ -32,17 +33,13 @@ const Message = ({
   </div>
 );
 
-const Connected = connect(
-  state => ({
-    forms: state.form.appForm,
-  }),
-  () => ({
-  }),
+const Connected = connectf(
+  'appForm', null,
 )(Message);
 
 export default reduxForm({
   form: 'appForm',
   destroyOnUnmount: true,
+  initialValues,
   // validate,
-  initialValues: { errors: '' },
 })(withStyles(styles)(Connected));

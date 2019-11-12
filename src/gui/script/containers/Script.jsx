@@ -1,9 +1,8 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { Field, reduxForm } from 'redux-form';
+import { reduxForm, Field } from 'redux-form';
 import { withStyles } from '@material-ui/core/styles';
 import { styles } from 'gui/app/style/Styles';
+import { connectf } from 'gui/app/containers/redux';
 import { BasicBtn as basicBtn } from 'gui/app/components/button';
 import { InputField, TextAreaField } from 'gui/app/components/field/redux-form';
 import { Title } from 'gui/app/components/label';
@@ -115,18 +114,13 @@ const Script = ({
   </form>
 );
 
-const Connected = connect(
-  state => ({
-    forms: state.form.scriptForm,
-  }),
-  dispatch => ({
-    actions: bindActionCreators(actionDefs, dispatch),
-  }),
+const Connected = connectf(
+  'scriptForm', actionDefs,
 )(Script);
 
 export default reduxForm({
   form: 'scriptForm',
   destroyOnUnmount: false,
-  // validate,
   initialValues: {},
+  // validate,
 })(withStyles(styles)(Connected));

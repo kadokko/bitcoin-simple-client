@@ -1,9 +1,8 @@
 import React from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
 import { withStyles } from '@material-ui/core/styles';
 import { styles } from 'gui/app/style/Styles';
+import { connectf } from 'gui/app/containers/redux';
 import { Row, Area } from 'gui/editor-tx/components/base/layout';
 import { Input, VinInputs, VoutInputs, Fee, TxHex, Txid } from 'gui/editor-tx/components/base';
 import { WitnessInputs, Wtxid } from 'gui/editor-tx/components/segwit';
@@ -141,18 +140,13 @@ const EditorTxSegwit = ({
   </div>
 );
 
-const Connected = connect(
-  state => ({
-    forms: state.form.segwitForm,
-  }),
-  dispatch => ({
-    actions: bindActionCreators(actionDefs, dispatch),
-  }),
+const Connected = connectf(
+  'segwitForm', actionDefs,
 )(EditorTxSegwit);
 
 export default reduxForm({
   form: 'segwitForm',
   destroyOnUnmount: false,
-  validate,
   initialValues: initialTxValues,
+  validate,
 })(withStyles(styles)(Connected));

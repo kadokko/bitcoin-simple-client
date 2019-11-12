@@ -1,13 +1,13 @@
 import React from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import { Field, FieldArray, reduxForm } from 'redux-form';
+import { reduxForm, Field, FieldArray } from 'redux-form';
 import { withStyles } from '@material-ui/core/styles';
+import { connectf } from 'gui/app/containers/redux';
 import { BasicBtn as basicBtn } from 'gui/app/components/button';
 import { Input } from 'gui/app/components/field/redux-form';
 import { Title } from 'gui/app/components/label';
 import { Box, Margin } from 'gui/app/components/layout';
 import { styles } from 'gui/app/style/Styles';
+import { initialValues } from './InitialValues';
 import * as actionDefs from '../actions/key';
 
 
@@ -96,18 +96,13 @@ const Key = ({
   </form>
 );
 
-const Connected = connect(
-  state => ({
-    forms: state.form.keyForm,
-  }),
-  dispatch => ({
-    actions: bindActionCreators(actionDefs, dispatch),
-  }),
+const Connected = connectf(
+  'keyForm', actionDefs,
 )(Key);
 
 export default reduxForm({
   form: 'keyForm',
   destroyOnUnmount: false,
+  initialValues,
   // validate,
-  initialValues: { num: 1 },
 })(withStyles(styles)(Connected));

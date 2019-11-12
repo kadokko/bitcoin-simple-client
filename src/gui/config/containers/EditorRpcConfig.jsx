@@ -1,9 +1,8 @@
 import React from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import { Field, reduxForm } from 'redux-form';
+import { reduxForm, Field } from 'redux-form';
 import { withStyles } from '@material-ui/core/styles';
 import { styles } from 'gui/app/style/Styles';
+import { connectf } from 'gui/app/containers/redux';
 import { Box } from 'gui/app/components/layout';
 import { InputField } from 'gui/app/components/field/redux-form';
 import { BasicBtn } from 'gui/app/components/button';
@@ -70,18 +69,13 @@ const Config = ({
   </div>
 );
 
-const Connected = connect(
-  state => ({
-    forms: state.form.configForm,
-  }),
-  dispatch => ({
-    actions: bindActionCreators(actionDefs, dispatch),
-  }),
+const Connected = connectf(
+  'configForm', actionDefs,
 )(Config);
 
 export default reduxForm({
   form: 'configForm',
   destroyOnUnmount: false,
-  // validate,
   initialValues: initialConfigValues,
+  // validate,
 })(withStyles(styles)(Connected));

@@ -11,7 +11,7 @@ import { InputField, TextAreaField } from 'gui/app/components/field/redux-form';
 import { CopyIcon, PlayIcon } from 'gui/app/components/icon';
 import { Box } from 'gui/app/components/layout';
 import { connected } from 'gui/editor-tx/containers/base';
-import * as actions from 'gui/editor-tx/actions/segwit';
+import * as actionDefs from 'gui/editor-tx/actions/segwit';
 import { ViewHelper as Helper } from 'lib/view/ViewHelper';
 import Validator from 'lib/util/Validator';
 
@@ -148,11 +148,13 @@ CreateSignatureDialog.propTypes = {
   }),
 };
 
-const Connected = connected(CreateSignatureDialog, 'segwit', actions);
+const Connected = connected(
+  CreateSignatureDialog, 'segwit', actionDefs,
+);
 
 export default reduxForm({
   form: 'segwitSigForm',
   destroyOnUnmount: true,
-  // validate,
   initialValues: {},
+  // validate,
 })(withStyles(styles)(Connected));

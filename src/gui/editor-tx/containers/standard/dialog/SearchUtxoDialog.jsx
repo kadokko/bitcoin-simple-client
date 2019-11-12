@@ -1,5 +1,5 @@
 import { connected, SearchUtxoDialog } from 'gui/editor-tx/containers/base';
-import * as actions from 'gui/editor-tx/actions/standard';
+import * as actionDefs from 'gui/editor-tx/actions/standard';
 
 
-export default connected(SearchUtxoDialog, 'standard', actions);
+export default connected(SearchUtxoDialog, 'standard', actionDefs);
