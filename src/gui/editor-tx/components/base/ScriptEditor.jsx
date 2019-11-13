@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { FormControl, Select, MenuItem } from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
-import { styles } from 'gui/app/style/Styles';
+import { withStyles, styles } from 'gui/app/style';
 import { OpCode } from 'lib/constant';
 import { WithAssistField } from 'gui/app/components/field/redux-form';
 

@@ -1,10 +1,10 @@
 import React from 'react';
 import { Field } from 'redux-form';
-import { withStyles } from '@material-ui/core/styles';
 import { Div } from 'gui/app/components/base';
 import { BasicBtn } from 'gui/app/components/button';
 import { TextAreaField } from 'gui/app/components/field/redux-form';
 import { DivTable, DivCell } from 'gui/app/components/table-div';
+import { withStyles } from 'gui/app/style';
 
 
 const Row = withStyles(() => ({

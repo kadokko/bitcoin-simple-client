@@ -1,7 +1,6 @@
 import React from 'react';
 import { Field } from 'redux-form';
-import { withStyles } from '@material-ui/core/styles';
-import { styles } from 'gui/app/style/Styles';
+import { withStyles, styles } from 'gui/app/style';
 
 
 const MarkField = ({ name, classes }) => (

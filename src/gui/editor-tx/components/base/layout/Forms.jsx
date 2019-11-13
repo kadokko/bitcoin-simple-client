@@ -1,6 +1,6 @@
-import { withStyles } from '@material-ui/core/styles';
 import { DivTable, DivCell } from 'gui/app/components/table-div';
 import { borderStyle, borderColor, borderWidth, borderRadius } from 'gui/app/style/Styles';
+import { withStyles } from 'gui/app/style';
 import { paddingBase } from './styles';
 
 

@@ -1,7 +1,6 @@
 import React from 'react';
-import { withStyles } from '@material-ui/core/styles';
-import { styles } from 'gui/app/style/Styles';
 import { Typography } from '@material-ui/core';
+import { withStyles, styles } from 'gui/app/style';
 
 
 const Title = ({ variant='h6', color='primary', gutterBottom=true, children }) => (

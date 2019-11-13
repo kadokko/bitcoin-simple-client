@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { withStyles } from '@material-ui/core/styles';
 import { FormGroup, Grid, Switch as MuiSwitch } from '@material-ui/core';
+import { withStyles } from 'gui/app/style';
 
 
 const Switch = withStyles(() => ({

@@ -1,4 +1,4 @@
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles } from 'gui/app/style';
 import { Div } from 'gui/app/components/base';
 
 

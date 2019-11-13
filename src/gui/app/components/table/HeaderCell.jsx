@@ -1,7 +1,6 @@
 import React from 'react';
 import { TableCell } from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
-import { styles } from 'gui/app/style/Styles';
+import { withStyles, styles } from 'gui/app/style';
 
 
 const HeaderCell = ({ classes, children }) => (

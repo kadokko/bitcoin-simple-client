@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import { withStyles } from '@material-ui/core/styles';
-import { connect } from 'gui/app/containers/redux';
 import { AppBar, Toolbar, Typography, Tabs, Tab } from '@material-ui/core';
 import { TabContainer } from 'gui/app/components/container';
 import { VpnKeyIcon, LockIcon, EditIcon, AddBoxIcon, SettingsIcon } from 'gui/app/components/icon';
-import { styles } from 'gui/app/style/Styles';
+import { connect } from 'gui/app/containers/redux';
+import { withStyles, styles } from 'gui/app/style';
 import * as actionDefs from 'gui/app/actions/app';
 import Key from 'gui/key/containers/Key';
 import HdKey from 'gui/hdkey/containers/HdKey';

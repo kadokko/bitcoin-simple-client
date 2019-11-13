@@ -1,8 +1,7 @@
 import React from 'react';
 import { reduxForm, Field } from 'redux-form';
-import { withStyles } from '@material-ui/core/styles';
-import { styles } from 'gui/app/style/Styles';
 import { connectf } from 'gui/app/containers/redux';
+import { withStyles, styles } from 'gui/app/style';
 import { Box } from 'gui/app/components/layout';
 import { InputField } from 'gui/app/components/field/redux-form';
 import { BasicBtn } from 'gui/app/components/button';

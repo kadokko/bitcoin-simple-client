@@ -1,8 +1,7 @@
 import React from 'react';
 import { reduxForm } from 'redux-form';
-import { withStyles } from '@material-ui/core/styles';
-import { styles } from 'gui/app/style/Styles';
 import { connectf } from 'gui/app/containers/redux';
+import { withStyles, styles } from 'gui/app/style';
 import { Box } from 'gui/app/components/layout';
 import { ErrorMessage as errorMessage } from 'gui/app/components/message';
 import { initialValues } from './InitialValues';

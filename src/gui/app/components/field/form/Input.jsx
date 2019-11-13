@@ -1,8 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import { TextField } from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
-import { styles } from 'gui/app/style/Styles';
+import { withStyles, styles } from 'gui/app/style';
 
 
 const Input = ({ label, value, defaultValue, inputRef, readOnly=false, maxLength, classes, onChange }) => (

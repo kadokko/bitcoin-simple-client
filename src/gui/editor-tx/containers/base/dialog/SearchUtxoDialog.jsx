@@ -1,7 +1,6 @@
 import React, { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Paper, Table, TableHead, TableBody, TableRow, TablePagination } from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
 import { Div, Span } from 'gui/app/components/base';
 import { BasicBtn, SquareIconBtn as squareIconBtn } from 'gui/app/components/button';
 import { ModalDialog } from 'gui/app/components/dialog';
@@ -10,6 +9,7 @@ import { Search } from 'gui/app/components/icon';
 import { Margin } from 'gui/app/components/layout';
 import { Col, ColGroup, HeaderCell, StrCell, NumCell } from 'gui/app/components/table';
 import { ErrorMessage } from 'gui/app/components/message';
+import { withStyles } from 'gui/app/style';
 import { ScriptType } from 'lib/constant';
 import { ViewHelper } from 'lib/view/ViewHelper';
 import ScriptAnalizer from 'lib/util/ScriptAnalizer';

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
-import { withStyles } from '@material-ui/core/styles';
 import { connect } from 'gui/app/containers/redux';
+import { withStyles } from 'gui/app/style';
 import { BasicBtn as basicBtn } from 'gui/app/components/button';
 import { Margin } from 'gui/app/components/layout';
 import * as actionDefs from '../actions/block';

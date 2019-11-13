@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Paper, Table, TableHead, TableBody, TableRow, TablePagination } from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
 import { DivContainer } from 'gui/app/components/container';
 import { StrCell } from 'gui/app/components/table';
-import { styles } from 'gui/app/style/Styles';
+import { withStyles, styles } from 'gui/app/style';
 
 
 const BlockIds = ({ blockIds, classes }) => {
