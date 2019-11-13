@@ -45,6 +45,10 @@ cd /vagrant_share
 npm run build:linux
 (-> dist/bitcoin-simple-client-{version}.zip)
 
+// mac
+npm run build:mac
+(-> dist/bitcoin-simple-client-{version}.dmg)
+
 // windows
 npm run build:win
 (-> dist/bitcoin-simple-client {version}.exe)
@@ -57,6 +61,9 @@ npm run build:win
 unzip bitcoin-simple-client-{version}.zip
 cd bitcoin-simple-client-{version}
 ./bitcoin-simple-client
+
+// mac
+double click "bitcoin-simple-client-{version}.dmg"
 
 // windows
 double click "bitcoin-simple-client {version}.exe"
