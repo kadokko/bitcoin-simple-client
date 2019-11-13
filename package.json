@@ -42,7 +42,7 @@
     "test:coverage": "react-scripts test --env=jsdom --coverage",
     "build": "react-scripts build",
     "build:linux": "react-scripts build && electron-builder --linux zip --x64",
-    "build:mac": "react-scripts build && electron-builder --mac mas --x64",
+    "build:mac": "react-scripts build && electron-builder --mac dmg --x64",
     "build:win": "react-scripts build && electron-builder --win portable --x64"
   },
   "build": {
