@@ -20,37 +20,46 @@ const BasicBtn = withStyles(() => ({
 }))(basicBtn);
 
 
-const Block = ({ states, actions }) => {
+const Block = ({
+  states: {
+    blockCount,
+    blockIds,
+  },
+  actions: {
+    getBlockCount,
+    generateBlocks,
+  },
+}) => {
 
   useEffect(() => {
-    actions.getBlockCount();
+    getBlockCount();
     // eslint-disable-next-line
-  }, [ states.blockCount ]);
+  }, [ blockCount ]);
 
   return (
     <div>
       <span>
         <BlockCount
-          value={ states.blockCount }
+          value={ blockCount }
         />
       </span>
       <span>
         <BasicBtn
           label="+1"
-          onClick={ () => actions.generateBlocks(1) }
+          onClick={ () => generateBlocks(1) }
         />
         <BasicBtn
           label="+100"
-          onClick={ () => actions.generateBlocks(100) }
+          onClick={ () => generateBlocks(100) }
         />
         <BasicBtn
           label="refresh"
-          onClick={ () => actions.getBlockCount() }
+          onClick={ () => getBlockCount() }
         />
       </span>
       <Margin />
       <BlockIds
-        blockIds={ states.blockIds }
+        blockIds={ blockIds }
       />
     </div>
   );
