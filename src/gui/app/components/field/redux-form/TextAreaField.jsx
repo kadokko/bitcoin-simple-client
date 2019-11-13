@@ -1,6 +1,5 @@
 import React from 'react';
-import { withStyles } from '@material-ui/core/styles';
-import { styles } from 'gui/app/style/Styles';
+import { withStyles, styles } from 'gui/app/style';
 import { InputField } from 'gui/app/components/field/redux-form';
 
 

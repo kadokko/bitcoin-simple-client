@@ -1,8 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import { TextField } from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
-import { styles } from 'gui/app/style/Styles';
+import { withStyles, styles } from 'gui/app/style';
 
 
 const TextArea = ({ label, value, inputRef, readOnly=false, rows=4, rowsMax=4, classes }) => (

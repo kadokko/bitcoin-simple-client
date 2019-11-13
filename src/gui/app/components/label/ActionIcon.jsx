@@ -1,7 +1,6 @@
 import React from 'react';
-import { withStyles } from '@material-ui/core/styles';
 import { IconStyle } from 'gui/app/components/label';
-import { styles } from 'gui/app/style/Styles';
+import { withStyles, styles } from 'gui/app/style';
 
 
 const ActionIcon = ({ func, icon, classes }) => (

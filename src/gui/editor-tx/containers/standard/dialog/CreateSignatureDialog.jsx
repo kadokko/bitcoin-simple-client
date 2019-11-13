@@ -1,8 +1,7 @@
 import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import { reduxForm, Field } from 'redux-form';
-import { withStyles } from '@material-ui/core/styles';
-import { styles } from 'gui/app/style/Styles';
+import { withStyles, styles } from 'gui/app/style';
 import { SquareIconBtn } from 'gui/app/components/button';
 import { DivContainer } from 'gui/app/components/container';
 import { ModalDialog } from 'gui/app/components/dialog';

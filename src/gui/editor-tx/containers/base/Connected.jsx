@@ -1,7 +1,6 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { withStyles } from '@material-ui/core/styles';
-import { styles } from 'gui/app/style/Styles';
+import { withStyles, styles } from 'gui/app/style';
 
 
 export const connected = (component, stateName, actionDefs) => {

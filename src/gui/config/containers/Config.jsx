@@ -1,7 +1,6 @@
 import React from 'react';
-import { withStyles } from '@material-ui/core/styles';
-import { styles } from 'gui/app/style/Styles';
 import { connect } from 'gui/app/containers/redux';
+import { withStyles, styles } from 'gui/app/style';
 import { Input as InputField } from 'gui/app/components/field/form';
 import { Box } from 'gui/app/components/layout';
 import * as actionDefs from '../actions/config';

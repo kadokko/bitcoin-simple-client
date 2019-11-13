@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Dialog, DialogActions, DialogContent, DialogTitle } from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
 import { BasicBtn } from 'gui/app/components/button';
-import { styles } from 'gui/app/style/Styles';
+import { withStyles, styles } from 'gui/app/style';
 
 
 const ModalDialog = ({ title, isDialogOpen, closeDialog, children }) => (
