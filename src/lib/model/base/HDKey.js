@@ -148,7 +148,7 @@ class HDKey {
   }
 
   static generate(seed) {
-    if (seed.length < 16 * 2 || seed.lengh > 64 * 2) {
+    if (seed.length < 16 * 2 || seed.length > 64 * 2) {
       throw new Error('seed length must be between 16 and 64 bytes (128 bits - 512 bits).');
     }
     const I = Hmac512.digest(Str.hex('Bitcoin seed'), seed);

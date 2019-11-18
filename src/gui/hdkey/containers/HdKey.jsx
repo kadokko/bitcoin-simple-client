@@ -7,7 +7,7 @@ import { BasicBtn as basicBtn, SquareIconBtn as squareIconBtn } from 'gui/app/co
 import { Title } from 'gui/app/components/label';
 import { Box } from 'gui/app/components/layout';
 import { CopyIcon, NewIcon } from 'gui/app/components/icon';
-import { ViewHelper as Helper } from 'lib/view/ViewHelper';
+import { ViewHelper as Helper } from 'gui/app/util/ViewHelper';
 import Validator from 'lib/util/Validator';
 import { initialValues } from './InitialValues';
 import * as actionDefs from '../actions/hdkey';

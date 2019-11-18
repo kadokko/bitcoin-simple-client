@@ -10,8 +10,8 @@ import { Margin } from 'gui/app/components/layout';
 import { Col, ColGroup, HeaderCell, StrCell, NumCell } from 'gui/app/components/table';
 import { ErrorMessage } from 'gui/app/components/message';
 import { withStyles } from 'gui/app/style';
+import { ViewHelper as Helper } from 'gui/app/util/ViewHelper';
 import { ScriptType } from 'lib/constant';
-import { ViewHelper } from 'lib/view/ViewHelper';
 import ScriptAnalizer from 'lib/util/ScriptAnalizer';
 
 
@@ -189,7 +189,7 @@ export const SearchUtxoDialog = ({
                     <StrCell>{ ScriptAnalizer.type(utxo.scriptPubKey) }</StrCell>
                     <NumCell>{ utxo.amount }</NumCell>
                     <NumCell>{ utxo.confirmations }</NumCell>
-                    <StrCell>{ ViewHelper.shorten(utxo.txid) }</StrCell>
+                    <StrCell>{ Helper.shorten(utxo.txid) }</StrCell>
                     <NumCell>{ utxo.vout }</NumCell>
                   </TableRow>
                 ))}

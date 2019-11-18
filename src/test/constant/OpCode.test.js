@@ -21,4 +21,35 @@ describe('OpCode', () => {
     });
   });
 
+  describe('isOpCode()', () => {
+    test('...', () => {
+      expect(OpCode.isOpCode('87')).toBe(true);
+      expect(OpCode.isOpCode('cd')).toBe(false);
+    });
+  });
+
+  describe('isPushdata1()', () => {
+    test('...', () => {
+      expect(OpCode.isPushdata1('4c')).toBe(true);
+      expect(OpCode.isPushdata1('4C')).toBe(true);
+      expect(OpCode.isPushdata1('4d')).toBe(false);
+    });
+  });
+
+  describe('isPushdata2()', () => {
+    test('...', () => {
+      expect(OpCode.isPushdata2('4d')).toBe(true);
+      expect(OpCode.isPushdata2('4D')).toBe(true);
+      expect(OpCode.isPushdata2('4e')).toBe(false);
+    });
+  });
+
+  describe('isPushdata4()', () => {
+    test('...', () => {
+      expect(OpCode.isPushdata4('4e')).toBe(true);
+      expect(OpCode.isPushdata4('4E')).toBe(true);
+      expect(OpCode.isPushdata4('4c')).toBe(false);
+    });
+  });
+
 });

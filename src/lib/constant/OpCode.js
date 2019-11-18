@@ -1,6 +1,3 @@
-import Validator from 'lib/util/Validator';
-
-
 class OpCode {
 
   // TODO make it a private property
@@ -159,20 +156,7 @@ class OpCode {
   }
 
   static isOpCode(byteStr) {
-    return this.codes.containsValue(byteStr.toLowerCase());
-  }
-
-  static isDataLen(byteStr) {
-    if (!Validator.isNum(byteStr)) {
-      return false;
-    }
-    if ([ '4c', '4d', '4e' ].contains(byteStr.toLowerCase())) {
-      return true;
-    }
-    if (parseInt(byteStr, 16) >= 1 && parseInt(byteStr, 16) <= 75) {
-      return true;
-    }
-    throw new Error('invalid value');
+    return this.values().includes(byteStr.toLowerCase());
   }
 
   static isPushdata1(byteStr) {
