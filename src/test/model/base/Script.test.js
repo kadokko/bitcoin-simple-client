@@ -21,4 +21,11 @@ describe('Script', () => {
     });
   });
 
+  describe('toString()', () => {
+    test('convert script asm to string.', () => {
+      expect(script.toString())
+        .toBe('OP_0 1234567890abcdef1234567890abcdef12345678');
+    });
+  });
+
 });
