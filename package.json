@@ -39,7 +39,7 @@
     "lint": "eslint src/**/*.js*",
     "test": "react-scripts test --env=jsdom ",
     "test:watch": "react-scripts test --env=node --silent=false --verbose false --watch",
-    "test:coverage": "react-scripts test --env=jsdom --coverage",
+    "test:coverage": "react-scripts test --env=node --watchAll=false --coverage",
     "build": "react-scripts build",
     "build:linux": "react-scripts build && electron-builder --linux zip --x64",
     "build:mac": "react-scripts build && electron-builder --mac mas --x64",
@@ -51,6 +51,11 @@
       "build",
       "public",
       "src/main.js"
+    ]
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/lib/**/*.js"
     ]
   },
   "browserslist": [
