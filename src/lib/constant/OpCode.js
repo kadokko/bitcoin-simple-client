@@ -159,7 +159,7 @@ class OpCode {
   }
 
   static isOpCode(byteStr) {
-    return this.codes.containsValue(byteStr.toLowerCase());
+    return this.values().includes(byteStr.toLowerCase());
   }
 
   static isDataLen(byteStr) {
