@@ -37,7 +37,7 @@ describe('Schnorr', () => {
   const order = 'FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364141';
   const G = Generator.getPoint();
 
-  describe.skip('single signature', () => {
+  describe('single signature', () => {
     const message = '21fbd20b359eee7bfea88e837108be44a1a421e33a05a45bc832d3e1a7aa713a';
 
     test('create signature.', () => {

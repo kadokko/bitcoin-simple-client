@@ -14,37 +14,9 @@ const p = Int(Secp256k1.p);
 const n = Int(Secp256k1.n);
 const a = Int(Secp256k1.a);
 const b = Int(Secp256k1.b);
-
-const zero = DecInt(0);
-const one = DecInt(1);
 const two = DecInt(2);
 const three = DecInt(3);
 
-export const toPlus = (i) => {
-  return i.add(p).mod(p);
-};
-
-export const modInv = (i) => {
-
-  let c = (i.lt(zero) || i.ge(p)) ? toPlus(i) : i;
-  let d = p;
-  let x = one;
-  let y = zero;
-  while (!d.eq(zero)) {
-    const q = c.div(d);
-    const m = c.mod(d);
-    // c{i+1} = d{i}
-    // d{i+1} = r{i}
-    c = d;
-    d = m;
-    // x{i+1} = y{i}
-    // y{i+1} = x{i} - q{i} * y{i}
-    const xPre = x;
-    x = y;
-    y = xPre.sub(q.mul(y));
-  }
-  return toPlus(x);
-};
 
 export class Point {
 
@@ -71,9 +43,9 @@ export class Point {
     const y1 = Int(this.y);
     const x2 = Int(point.x);
     const y2 = Int(point.y);
-    const l = (y2.sub(y1)).mul(modInv(x2.sub(x1))).mod(p);
+    const l = (y2.sub(y1)).mul(x2.sub(x1).modInv(p)).mod(p);
     const x3 = l.sqr().sub(x1).sub(x2).mod(p);
-    const y3 = toPlus(l.mul(x1.sub(x3)).sub(y1).mod(p));
+    const y3 = l.mul(x1.sub(x3)).sub(y1).mod(p).toPos(p);
     return new Point(x3.toHex(), y3.toHex());
   }
 
@@ -84,9 +56,9 @@ export class Point {
   double() {
     const x = Int(this.x);
     const y = Int(this.y);
-    const s = x.sqr().mul(three).add(a).mul(modInv(y.mul(two))).mod(p);
+    const s = x.sqr().mul(three).add(a).mul(y.mul(two).modInv(p)).mod(p);
     const x3 = s.sqr().sub(x.mul(two)).mod(p);
-    const y3 = toPlus(s.mul(x.sub(x3)).sub(y).mod(p));
+    const y3 = s.mul(x.sub(x3)).sub(y).mod(p).toPos(p);
     return new Point(x3.toHex(), y3.toHex());
   }
 
