@@ -1,5 +1,4 @@
-import { Generator, Point, modInv } from 'lib/util/Secp256k1';
-import { Int } from 'lib/type/Int';
+import { Generator, Point } from 'lib/util/Secp256k1';
 
 
 describe('Generator', () => {
@@ -9,17 +8,6 @@ describe('Generator', () => {
       const G = Generator.getPoint();
       expect(G.x).toBe('79be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798');
       expect(G.y).toBe('483ada7726a3c4655da4fbfc0e1108a8fd17b448a68554199c47d08ffb10d4b8');
-    });
-  });
-
-});
-
-describe('function', () => {
-
-  describe('modInv()', () => {
-    test('calculate modular multiplicative inverse.', () => {
-      const mi = modInv(Int('f9308a019258c31049344f85f89d5229b531c845836f99b08601f113bce036f9'));
-      expect(mi.toHex()).toBe('ac3bf771cd63e5876839cb8ce8a88db91aa787f11afc562ace4b66459732b447');
     });
   });
 

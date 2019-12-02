@@ -51,6 +51,15 @@ class InnerInt {
     return new InnerInt(this.n.toRed(context).redSqrt().fromRed());
   }
 
+  modInv(p) {
+    const n = this.n.isNeg() ? this.toPos(p).innerValue() : this.n;
+    return new InnerInt(n.toRed(context).redInvm().fromRed());
+  }
+
+  toPos(p) {
+    return new InnerInt(this.n.add(this.toInt(p)).mod(this.toInt(p)));
+  }
+
   eq(m) {
     return this.n.eq(this.toInt(m));
   }
@@ -107,6 +116,7 @@ class InnerInt {
     return this.n;
   }
 
+  // return BN object
   toInt = (m, base=16) => {
     if (Validator.isEmpty(m)) {
       throw new Error('invalid number');
@@ -114,11 +124,11 @@ class InnerInt {
     if (Validator.isNumber(m)) {
       return new BN(m, 10);
     }
-    // BN
+    // in case of BN
     if (hasProperty(m, 'red')) {
       return m;
     }
-    // InnerInt
+    // in case of InnerInt
     if (hasProperty(m, 'toInt')) {
       return m.innerValue();
     }
