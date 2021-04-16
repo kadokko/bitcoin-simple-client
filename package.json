@@ -16,7 +16,7 @@
     "bn.js": "^5.0.0",
     "csprng": "0.1.2",
     "classnames": "^2.2.6",
-    "jsrsasign": "^8.0.12",
+    "jsrsasign": "^10.2.0",
     "prop-types": "^15.7.2",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
