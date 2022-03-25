@@ -29,7 +29,7 @@
   },
   "devDependencies": {
     "babel-eslint": "10.0.2",
-    "electron": "^6.0.12",
+    "electron": "^13.6.6",
     "electron-builder": "^21.2.0",
     "eslint-config-airbnb": "^18.0.1"
   },
